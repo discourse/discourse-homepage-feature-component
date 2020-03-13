@@ -44,7 +44,7 @@
       align-items: center;
       justify-content: center;
 
-      @media screen and (min-width: 450px) {
+      @media screen and (min-width: 650px) {
         &:first-of-type:not(:last-of-type) {
           margin-right: 1.5em;
         }

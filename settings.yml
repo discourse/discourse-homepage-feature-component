@@ -1,0 +1,29 @@
+featured_tag:
+  default: featured
+
+hide_featured_tag:
+  default: false
+  description: When this is enabled the featured tag will be hidden from users that aren't admins/moderators.
+
+show_on:
+  default: homepage
+  type: enum
+  choices:
+    - top_menu
+    - homepage
+    - all
+  description: top_menu refers to the <a href="/admin/site_settings/category/all_results?filter=top_menu">top menu site setting</a>
+
+show_for:
+  default: everyone
+  type: enum
+  choices:
+    - everyone
+    - logged_in
+    - logged_out
+
+show_title:
+  default: false
+
+title_text:
+  default: "Featured Topics"

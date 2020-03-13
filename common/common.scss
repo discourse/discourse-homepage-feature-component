@@ -1,0 +1,109 @@
+.homepage-featured-topics {
+  #main-outlet {
+    padding-top: 1.5em;
+    @media screen and (max-width: 450px) {
+      padding-top: 0.5em;
+    }
+  }
+}
+
+.featured-topic-wrapper {
+  margin-top: 6em;
+  text-align: center;
+  border-bottom: 1px solid $primary-low;
+  position: relative;
+  min-height: 350px;
+  .spinner {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 125px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media screen and (max-width: 450px) {
+    margin-top: 5em;
+  }
+  h2 {
+    border-bottom: 1px solid $primary-low;
+    padding-bottom: 0.5em;
+    margin-bottom: 1.5em;
+  }
+  .featured-topics {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    @media screen and (max-width: 600px) {
+      flex-wrap: wrap;
+    }
+    .featured-topic {
+      flex: 1 1 30%;
+      max-width: 500px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+
+      @media screen and (min-width: 450px) {
+        &:first-of-type:not(:last-of-type) {
+          margin-right: 1.5em;
+        }
+
+        &:last-of-type:not(:first-of-type) {
+          margin-left: 1.5em;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        width: 100%;
+        &:nth-of-type(3) {
+          display: none;
+        }
+      }
+      @media screen and (max-width: 450px) {
+        width: 100%;
+        &:nth-of-type(2) {
+          display: none;
+        }
+        &:nth-of-type(3) {
+          display: none;
+        }
+      }
+      h3 {
+        margin: 0;
+        padding: 1em 0 1.5em;
+        font-size: $font-up-2;
+        a {
+          display: -webkit-box;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          word-wrap: break-word;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+        @media screen and (max-width: 450px) {
+          padding: 1em 0 1em;
+        }
+      }
+      .featured-topic-image {
+        height: 200px;
+        max-width: 450px;
+        width: 100%;
+        background-size: cover;
+        background-position: center center;
+        a {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+body:not(.staff) {
+  .tag-drop li[data-name="#{$featured-tag}"],
+  [data-tag-name="#{$featured-tag}"] {
+    display: none;
+  }
+}

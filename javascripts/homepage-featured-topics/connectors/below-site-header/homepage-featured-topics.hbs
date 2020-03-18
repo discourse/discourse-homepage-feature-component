@@ -1,31 +1,29 @@
-{{#if show_for}}
+{{#if showFor}}
   {{#if displayHomepageFeatured}}
-
-  <div class="custom-homepage-wrapper">
-    <div class="wrap custom-homepage">
-      <div class="featured-topic-wrapper">
-
-        {{#if (theme-setting 'show_title')}}
-         {{titleElement}} 
-        {{/if}}
-
-        {{conditional-loading-spinner condition=loadingFeatures}}
-
+    <div class="custom-homepage-wrapper">
+      <div class="wrap custom-homepage">
+        <div class="featured-topic-wrapper">
+          {{#if (theme-setting "show_title")}}
+            {{titleElement}}
+          {{/if}}
+          {{conditional-loading-spinner condition=loadingFeatures}}
           <div class="featured-topics">
-          {{#each customFeaturedTopics as |t|}}
-            <div class="featured-topic">
-              <div class="featured-topic-image" style="background-image: url({{t.image_url}})">
-                <a href="/t/{{t.slug}}"></a>
+            {{#each customFeaturedTopics as |t|}}
+              <div class="featured-topic">
+                <div
+                  class="featured-topic-image"
+                  style="background-image: url({{t.image_url}})"
+                >
+                  <a href="/t/{{t.slug}}"></a>
+                </div>
+                <h3>
+                  {{topic-link t}}
+                </h3>
               </div>
-              <h3>
-                {{topic-link t}}
-              </h3>
-              </div>
-          {{/each}}
+            {{/each}}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
   {{/if}}
 {{/if}}

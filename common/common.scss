@@ -13,12 +13,18 @@
   text-align: center;
   border-bottom: 1px solid $primary-low;
   position: relative;
-  min-height: 350px;
+  min-height: 280px;
+  @media screen and (max-width: 450px) {
+    min-height: 265px;
+  }
   .spinner {
     position: absolute;
     left: 0;
     right: 0;
-    top: 125px;
+    top: 80px;
+    @media screen and (max-width: 450px) {
+      top: 70px;
+    }
     margin-left: auto;
     margin-right: auto;
   }

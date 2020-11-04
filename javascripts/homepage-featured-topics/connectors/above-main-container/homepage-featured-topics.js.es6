@@ -9,12 +9,12 @@ export default {
     const topMenuRoutes = Discourse.SiteSettings.top_menu
       .split("|")
       .filter(Boolean)
-      .map(route => `/${route}`);
+      .map((route) => `/${route}`);
 
     const homeRoute = topMenuRoutes[0];
 
-    withPluginApi("0.1", api => {
-      api.onPageChange(url => {
+    withPluginApi("0.1", (api) => {
+      api.onPageChange((url) => {
         if (!settings.featured_tag) {
           return;
         }
@@ -36,26 +36,26 @@ export default {
 
           component.setProperties({
             displayHomepageFeatured: true,
-            loadingFeatures: true
+            loadingFeatures: true,
           });
 
           const titleElement = document.createElement("h2");
           titleElement.innerHTML = settings.title_text;
           component.set("titleElement", titleElement);
 
-          ajax(`/tags/${settings.featured_tag}.json`)
-            .then(result => {
+          ajax(`/tag/${settings.featured_tag}.json`)
+            .then((result) => {
               // Get posts from tag
               let customFeaturedTopics = [];
               result.topic_list.topics
                 .slice(0, 3)
-                .forEach(topic =>
+                .forEach((topic) =>
                   customFeaturedTopics.push(Topic.create(topic))
                 );
               component.set("customFeaturedTopics", customFeaturedTopics);
             })
             .finally(() => component.set("loadingFeatures", false))
-            .catch(e => {
+            .catch((e) => {
               // the featured tag doesn't exist
               if (e.jqXHR && e.jqXHR.status === 404) {
                 document.querySelector("html").classList.remove(FEATURED_CLASS);
@@ -82,5 +82,5 @@ export default {
         }
       });
     });
-  }
+  },
 };

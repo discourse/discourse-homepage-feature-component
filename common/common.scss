@@ -12,10 +12,7 @@
   text-align: center;
   border-bottom: 1px solid $primary-low;
   position: relative;
-  min-height: 280px;
-  @media screen and (max-width: 450px) {
-    min-height: 265px;
-  }
+
   .spinner {
     position: absolute;
     left: 0;
@@ -28,7 +25,7 @@
     margin-right: auto;
   }
   @media screen and (max-width: 450px) {
-    margin-top: 5em;
+    margin-top: 1em;
   }
   h2 {
     border-bottom: 1px solid $primary-low;
@@ -50,28 +47,47 @@
       align-items: center;
       justify-content: center;
 
-      @media screen and (min-width: 650px) {
+      @media screen and (min-width: 451px) {
+        margin: 0 1.25em;
         &:first-of-type:not(:last-of-type) {
-          margin-right: 1.5em;
+          margin-left: 0;
         }
-
         &:last-of-type:not(:first-of-type) {
-          margin-left: 1.5em;
+          margin-right: 0;
+        }
+      }
+
+      @media screen and (max-width: 999px) {
+        &:nth-of-type(4) {
+          margin-right: 0;
+        }
+        &:nth-of-type(n + 5) {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width: 800px) {
+        &:nth-of-type(3) {
+          margin-right: 0;
+        }
+        &:nth-of-type(n + 4) {
+          display: none;
         }
       }
 
       @media screen and (max-width: 600px) {
         width: 100%;
-        &:nth-of-type(3) {
+        &:nth-of-type(2) {
+          margin-right: 0;
+        }
+        &:nth-of-type(n + 3) {
           display: none;
         }
       }
       @media screen and (max-width: 450px) {
         width: 100%;
-        &:nth-of-type(2) {
-          display: none;
-        }
-        &:nth-of-type(3) {
+        margin: 0;
+        &:nth-of-type(n + 2) {
           display: none;
         }
       }

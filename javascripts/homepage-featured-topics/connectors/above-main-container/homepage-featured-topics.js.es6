@@ -6,7 +6,7 @@ const FEATURED_CLASS = "homepage-featured-topics";
 
 export default {
   setupComponent(args, component) {
-    const topMenuRoutes = Discourse.SiteSettings.top_menu
+    const topMenuRoutes = this.siteSettings.top_menu
       .split("|")
       .filter(Boolean)
       .map((route) => `/${route}`);
@@ -36,7 +36,6 @@ export default {
 
           component.setProperties({
             displayHomepageFeatured: true,
-            loadingFeatures: true,
           });
 
           const titleElement = document.createElement("h2");
@@ -47,14 +46,38 @@ export default {
             .then((result) => {
               // Get posts from tag
               let customFeaturedTopics = [];
-              result.topic_list.topics
-                .slice(0, 3)
-                .forEach((topic) =>
-                  customFeaturedTopics.push(Topic.create(topic))
-                );
+              result.topic_list.topics.forEach((topic) =>
+                topic.image_url
+                  ? customFeaturedTopics.push(Topic.create(topic))
+                  : ""
+              );
+
+              customFeaturedTopics = customFeaturedTopics.slice(
+                0,
+                settings.number_of_topics
+              );
+
+              if (settings.sort_by_created) {
+                customFeaturedTopics = customFeaturedTopics.sort(function (
+                  a,
+                  b
+                ) {
+                  return a.created_at < b.created_at
+                    ? -1
+                    : a.created_at > b.created_at
+                    ? 1
+                    : 0;
+                });
+              }
+
               component.set("customFeaturedTopics", customFeaturedTopics);
+
+              if (customFeaturedTopics.length) {
+                component.set("displayCustomFeatured", true);
+              } else {
+                component.set("displayCustomFeatured", false);
+              }
             })
-            .finally(() => component.set("loadingFeatures", false))
             .catch((e) => {
               // the featured tag doesn't exist
               if (e.jqXHR && e.jqXHR.status === 404) {
@@ -65,6 +88,7 @@ export default {
         } else {
           document.querySelector("html").classList.remove(FEATURED_CLASS);
           component.set("displayHomepageFeatured", false);
+          component.set("displayCustomFeatured", true);
         }
 
         if (settings.show_for === "everyone") {

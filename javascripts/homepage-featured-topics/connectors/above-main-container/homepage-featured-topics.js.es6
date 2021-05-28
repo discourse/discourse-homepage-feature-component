@@ -1,34 +1,37 @@
 import { ajax } from "discourse/lib/ajax";
 import Topic from "discourse/models/topic";
 import { withPluginApi } from "discourse/lib/plugin-api";
+import { getOwner } from "discourse-common/lib/get-owner";
 
 const FEATURED_CLASS = "homepage-featured-topics";
 
 export default {
   setupComponent(args, component) {
-    const topMenuRoutes = this.siteSettings.top_menu
-      .split("|")
-      .filter(Boolean)
-      .map((route) => `/${route}`);
-
-    const homeRoute = topMenuRoutes[0];
-
     withPluginApi("0.1", (api) => {
       api.onPageChange((url) => {
         if (!settings.featured_tag) {
           return;
         }
 
-        const home = url === "/" || url.match(/^\/\?/) || url === homeRoute;
+        const topMenuRoutes = this.siteSettings.top_menu
+          .split("|")
+          .filter(Boolean);
+
+        const homeRoute = topMenuRoutes[0];
+        const router = getOwner(this).lookup("router:main");
+        const route = router.currentRoute;
 
         let showBannerHere;
         if (settings.show_on === "homepage") {
-          showBannerHere = home;
+          showBannerHere = route.localName === homeRoute;
         } else if (settings.show_on === "top_menu") {
-          showBannerHere = topMenuRoutes.indexOf(url) > -1 || home;
+          showBannerHere = topMenuRoutes.includes(route.localName);
         } else {
           showBannerHere =
-            url.match(/.*/) && !url.match(/search.*/) && !url.match(/admin.*/);
+            route.localName != "full-page-search" &&
+            !route.name.match(/admin.*/) &&
+            !route.name.match(/review.*/) &&
+            !route.name.match(/editCategory.*/);
         }
 
         if (showBannerHere) {

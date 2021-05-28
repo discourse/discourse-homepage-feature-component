@@ -4,10 +4,8 @@
       <div class="custom-homepage-wrapper">
         <div class="custom-homepage">
           <div class="featured-topic-wrapper">
-            {{#if (theme-setting "show_title")}}
-              {{titleElement}}
-            {{/if}}
-            {{conditional-loading-spinner condition=loadingFeatures}}
+            {{titleElement}}
+
             <div class="featured-topics">
               {{#each customFeaturedTopics as |t|}}
                 {{#if t.image_url}}

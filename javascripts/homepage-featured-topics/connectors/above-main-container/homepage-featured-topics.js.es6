@@ -41,10 +41,6 @@ export default {
             displayHomepageFeatured: true,
           });
 
-          const titleElement = document.createElement("h2");
-          titleElement.innerHTML = settings.title_text;
-          component.set("titleElement", titleElement);
-
           ajax(`/tag/${settings.featured_tag}.json`)
             .then((result) => {
               // Get posts from tag
@@ -59,6 +55,12 @@ export default {
                 0,
                 settings.number_of_topics
               );
+
+              if (customFeaturedTopics.length && settings.show_title) {
+                const titleElement = document.createElement("h2");
+                titleElement.innerHTML = settings.title_text;
+                component.set("titleElement", titleElement);
+              }
 
               if (settings.sort_by_created) {
                 customFeaturedTopics = customFeaturedTopics.sort(function (

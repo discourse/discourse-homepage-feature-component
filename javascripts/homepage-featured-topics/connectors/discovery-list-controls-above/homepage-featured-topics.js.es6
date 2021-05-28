@@ -26,12 +26,6 @@ export default {
           showBannerHere = route.localName === homeRoute;
         } else if (settings.show_on === "top_menu") {
           showBannerHere = topMenuRoutes.includes(route.localName);
-        } else {
-          showBannerHere =
-            route.localName != "full-page-search" &&
-            !route.name.match(/admin.*/) &&
-            !route.name.match(/review.*/) &&
-            !route.name.match(/editCategory.*/);
         }
 
         if (showBannerHere) {

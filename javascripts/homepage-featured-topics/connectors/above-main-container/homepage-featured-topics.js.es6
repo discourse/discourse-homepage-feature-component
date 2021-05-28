@@ -67,9 +67,9 @@ export default {
                   a,
                   b
                 ) {
-                  return a.created_at < b.created_at
+                  return a.created_at > b.created_at
                     ? -1
-                    : a.created_at > b.created_at
+                    : a.created_at < b.created_at
                     ? 1
                     : 0;
                 });

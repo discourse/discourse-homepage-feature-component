@@ -1,33 +1,3 @@
-{{#if showFor}}
-  {{#if displayHomepageFeatured}}
-    {{#if displayCustomFeatured}}
-      <div class="custom-homepage-wrapper">
-        <div class="custom-homepage">
-          <div class="featured-topic-wrapper">
-            {{titleElement}}
-
-            <div class="featured-topics">
-              {{#each customFeaturedTopics as |t|}}
-                {{#if t.image_url}}
-                  <div class="featured-topic">
-                    <div
-                      class="featured-topic-image"
-                      style="background-image: url({{t.image_url}})"
-                    >
-                      <a
-                        href="/t/{{t.slug}}/{{t.id}}/{{t.last_read_post_number}}"
-                      ></a>
-                    </div>
-                    <h3>
-                      {{topic-link t}}
-                    </h3>
-                  </div>
-                {{/if}}
-              {{/each}}
-            </div>
-          </div>
-        </div>
-      </div>
-    {{/if}}
-  {{/if}}
-{{/if}}
+{{#unless (theme-setting "above_main_container")}}
+  {{featured-homepage-topics}}
+{{/unless}}

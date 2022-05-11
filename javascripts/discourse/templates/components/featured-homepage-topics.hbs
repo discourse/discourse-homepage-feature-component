@@ -11,8 +11,11 @@
                   <div class="featured-topic">
                     <div
                       class="featured-topic-image"
-                      style="background-image: url({{t.image_url}})"
+                      style={{html-safe
+                        (concat "background-image: url(" t.image_url ")")
+                      }}
                     >
+                      {{! template-lint-disable no-invalid-link-text }}
                       <a
                         href="/t/{{t.slug}}/{{t.id}}/{{t.last_read_post_number}}"
                       ></a>

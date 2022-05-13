@@ -1,5 +1,5 @@
-{{! switching theme component if the setting "above_main_container" is enabled, 
-or if "show on" setting is set to "all" }}
+{{! switches plugin outlet if the setting "above_main_container" is enabled (manual), 
+or if "show on" setting is set to "all" (automatic) }}
 {{#unless
   (or
     (theme-setting "above_main_container") (eq (theme-setting "show_on") "all")

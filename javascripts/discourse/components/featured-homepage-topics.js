@@ -96,10 +96,7 @@ export default Component.extend({
   showTitle() {
     if (settings.show_title) {
       const titleElement = document.createElement("h2");
-      titleElement.innerHTML = I18n.t(themePrefix("featured_topic_title"))
-        .length
-        ? I18n.t(themePrefix("featured_topic_title"))
-        : settings.title_text;
+      titleElement.innerHTML = I18n.t(themePrefix("featured_topic_title")) || settings.title_text;
       return titleElement;
     }
   },

@@ -17,29 +17,28 @@ export default Component.extend({
     if (this.isDestroying || this.isDestroyed) {
       return;
     }
-      let sortOrder = settings.sort_by_created ? "created" : "activity";
-      if (settings.featured_tag) {
-        this.store
-          .findFiltered("topicList", {
-            filter: "latest",
-            params: {
-              tags: [`${settings.featured_tag}`],
-              order: sortOrder,
-            },
-          })
-          .then((topicList) => {
-            let featuredTagTopics = [];
+    let sortOrder = settings.sort_by_created ? "created" : "activity";
+    if (settings.featured_tag) {
+      this.store
+        .findFiltered("topicList", {
+          filter: "latest",
+          params: {
+            tags: [`${settings.featured_tag}`],
+            order: sortOrder,
+          },
+        })
+        .then((topicList) => {
+          let featuredTagTopics = [];
 
-            topicList.topics.forEach((topic) =>
-              topic.image_url ? featuredTagTopics.push(Topic.create(topic)) : ""
-            );
+          topicList.topics.forEach((topic) =>
+            topic.image_url ? featuredTagTopics.push(Topic.create(topic)) : ""
+          );
 
-            this.set(
-              "featuredTagTopics",
-              featuredTagTopics.slice(0, settings.number_of_topics)
-            );
-          });
-      }
+          this.set(
+            "featuredTagTopics",
+            featuredTagTopics.slice(0, settings.number_of_topics)
+          );
+        });
     }
   },
 
@@ -60,6 +59,7 @@ export default Component.extend({
   },
 
   willDestroyElement() {
+    this.appEvents.off("page:changed", this, "_checkClass");
     document.querySelector("body").classList.remove(FEATURED_CLASS);
   },
 
@@ -96,7 +96,8 @@ export default Component.extend({
   showTitle() {
     if (settings.show_title) {
       const titleElement = document.createElement("h2");
-      titleElement.innerHTML = I18n.t(themePrefix("featured_topic_title")) || settings.title_text;
+      titleElement.innerHTML =
+        I18n.t(themePrefix("featured_topic_title")) || settings.title_text;
       return titleElement;
     }
   },

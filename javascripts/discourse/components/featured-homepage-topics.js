@@ -14,7 +14,9 @@ export default Component.extend({
   featuredTagTopics: null,
 
   _getBanner() {
-    if (!(this.get("isDestroyed") || this.get("isDestroying"))) {
+    if (this.isDestroying || this.isDestroyed) {
+      return;
+    }
       let sortOrder = settings.sort_by_created ? "created" : "activity";
       if (settings.featured_tag) {
         this.store

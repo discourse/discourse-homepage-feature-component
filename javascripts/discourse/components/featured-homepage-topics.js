@@ -1,5 +1,6 @@
 import discourseComputed from "discourse-common/utils/decorators";
 import Component from "@ember/component";
+import I18n from "I18n";
 import { inject as service } from "@ember/service";
 import Topic from "discourse/models/topic";
 import { defaultHomepage } from "discourse/lib/utilities";
@@ -28,7 +29,7 @@ export default Component.extend({
             let featuredTagTopics = [];
 
             topicList.topics.forEach((topic) =>
-              topic.image_url ? featuredTagTopics.push(Topic.create(topic)) : ""
+              featuredTagTopics.push(Topic.create(topic))
             );
 
             this.set(
@@ -93,7 +94,10 @@ export default Component.extend({
   showTitle() {
     if (settings.show_title) {
       const titleElement = document.createElement("h2");
-      titleElement.innerHTML = settings.title_text;
+      titleElement.innerHTML = I18n.t(themePrefix("featured_topic_title"))
+        .length
+        ? I18n.t(themePrefix("featured_topic_title"))
+        : settings.title_text;
       return titleElement;
     }
   },

@@ -1,3 +1,9 @@
-{{#if (theme-setting "above_main_container")}}
+{{! switching theme component if the setting "above_main_container" is enabled, 
+or if "show on" setting is set to "all" }}
+{{#if
+  (or
+    (theme-setting "above_main_container") (eq (theme-setting "show_on") "all")
+  )
+}}
   {{featured-homepage-topics}}
 {{/if}}

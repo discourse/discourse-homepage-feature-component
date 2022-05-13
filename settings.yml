@@ -9,7 +9,7 @@ number_of_topics:
 
 hide_featured_tag:
   default: false
-  description: When this is enabled the featured tag will be hidden from users that aren't admins/moderators.
+  description: When enabled the tag "featured tag" set above will be invisible to normal users when viewing topics.
 
 show_on:
   default: homepage
@@ -18,7 +18,7 @@ show_on:
     - top_menu
     - homepage
     - all
-  description: top_menu refers to the <a href="/admin/site_settings/category/all_results?filter=top_menu">top menu site setting</a> </br> when set to all, enable	&ldquo;above main container&rdquo; below.
+  description: top_menu refers to pages set in the <a href="/admin/site_settings/category/all_results?filter=top_menu">top menu site setting</a>
 
 show_for:
   default: everyone
@@ -30,6 +30,7 @@ show_for:
 
 show_title:
   default: false
+  description: displays the text set below
 
 title_text:
   default: "Featured Topics"
@@ -40,4 +41,4 @@ sort_by_created:
 
 above_main_container:
   default: false
-  description: "Advanced: this changes the plugin outlet for the component. Enable if you've set &ldquo;show on&rdquo; to &ldquo;all&rdquo;"
+  description: Advanced theme development&colon; this changes the plugin outlet for the component to "above main container"

@@ -14,7 +14,9 @@ export default Component.extend({
   featuredTagTopics: null,
 
   _getBanner() {
-    if (!(this.get("isDestroyed") || this.get("isDestroying"))) {
+    if (this.isDestroying || this.isDestroyed) {
+      return;
+    }
       let sortOrder = settings.sort_by_created ? "created" : "activity";
       if (settings.featured_tag) {
         this.store
@@ -94,10 +96,7 @@ export default Component.extend({
   showTitle() {
     if (settings.show_title) {
       const titleElement = document.createElement("h2");
-      titleElement.innerHTML = I18n.t(themePrefix("featured_topic_title"))
-        .length
-        ? I18n.t(themePrefix("featured_topic_title"))
-        : settings.title_text;
+      titleElement.innerHTML = I18n.t(themePrefix("featured_topic_title")) || settings.title_text;
       return titleElement;
     }
   },

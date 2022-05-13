@@ -29,7 +29,7 @@ export default Component.extend({
             let featuredTagTopics = [];
 
             topicList.topics.forEach((topic) =>
-              featuredTagTopics.push(Topic.create(topic))
+              topic.image_url ? featuredTagTopics.push(Topic.create(topic)) : ""
             );
 
             this.set(

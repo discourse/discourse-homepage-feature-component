@@ -41,7 +41,7 @@ export default Component.extend({
   showHere(currentRoute, currentRouteName) {
     if (currentRoute) {
       if (settings.show_on === "homepage") {
-        return currentRouteName == `discovery.${defaultHomepage()}`;
+        return currentRouteName === `discovery.${defaultHomepage()}`;
       } else if (settings.show_on === "top_menu") {
         const topMenuRoutes = this.siteSettings.top_menu
           .split("|")

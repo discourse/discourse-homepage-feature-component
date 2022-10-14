@@ -45,4 +45,5 @@ featured_content_position:
   choices:
     - above_main_container
     - below_discovery_categories
+    - discovery_list_controls_above
   description: Advanced theme development&colon; this changes the plugin outlet for the component

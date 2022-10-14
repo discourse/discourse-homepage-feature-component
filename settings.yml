@@ -39,6 +39,11 @@ sort_by_created:
   default: true
   description: Disable to sort by latest activity
 
-above_main_container:
-  default: false
-  description: Advanced theme development&colon; this changes the plugin outlet for the component to "above main container"
+featured_content_position:
+  default: discovery_list_controls_above
+  type: enum
+  choices:
+    - above_main_container
+    - below_discovery_categories
+    - discovery_list_controls_above
+  description: Advanced theme development&colon; this changes the plugin outlet for the component

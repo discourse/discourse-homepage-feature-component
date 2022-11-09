@@ -3,12 +3,7 @@
     {{#if featuredTagTopics}}
       <div class="custom-homepage-wrapper">
         <div class="custom-homepage">
-          <div
-            class={{concat-class
-              "featured-topic-wrapper"
-              (if (theme-setting "show_all_on_mobile") "-mobile-show-all")
-            }}
-          >
+          <div class={{concat-class "featured-topic-wrapper" mobileStyle}}>
             {{showTitle}}
             <div class="featured-topics">
               {{#each featuredTagTopics as |t|}}

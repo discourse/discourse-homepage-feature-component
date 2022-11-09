@@ -39,6 +39,18 @@ sort_by_created:
   default: true
   description: Disable to sort by latest activity
 
+show_all_on_mobile:
+  default: false
+  description: By default only 1 is shown on mobile. Checking this setting will show all.
+
+mobile_style:
+  default: stacked
+  type: enum
+  choices:
+    - stacked
+    - horizontal_scroll
+  description: If more than one is choses to be shown on mobile, these will be shown stacked by default. You can change this behaviour to have them shown horizontally.
+
 featured_content_position:
   default: discovery_list_controls_above
   type: enum

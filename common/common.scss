@@ -81,6 +81,7 @@ html.homepage-featured-topics {
           display: none;
         }
       }
+
       @media screen and (max-width: 450px) {
         width: 100%;
         margin: 0;
@@ -114,6 +115,19 @@ html.homepage-featured-topics {
           display: block;
           width: 100%;
           height: 100%;
+        }
+      }
+    }
+  }
+
+  &.-mobile-show-all {
+    @media screen and (max-width: 450px) {
+      .featured-topics {
+        flex-direction: column;
+        .featured-topic {
+          &:nth-of-type(n + 2) {
+            display: flex;
+          }
         }
       }
     }

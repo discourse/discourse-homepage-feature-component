@@ -33,9 +33,7 @@ html.homepage-featured-topics {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    @media screen and (max-width: 600px) {
-      flex-wrap: wrap;
-    }
+
     .featured-topic {
       flex: 1 1 30%;
       max-width: 500px;
@@ -81,9 +79,9 @@ html.homepage-featured-topics {
           display: none;
         }
       }
+
       @media screen and (max-width: 450px) {
         width: 100%;
-        margin: 0;
         &:nth-of-type(n + 2) {
           display: none;
         }
@@ -92,16 +90,13 @@ html.homepage-featured-topics {
         margin: 0;
         padding: 1em 0 1.5em;
         font-size: $font-up-2;
-        a {
+        padding: 0.5em 1em 1em 1em a {
           display: -webkit-box;
           overflow: hidden;
           text-overflow: ellipsis;
           word-wrap: break-word;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
-        }
-        @media screen and (max-width: 450px) {
-          padding: 1em 0 1em;
         }
       }
       .featured-topic-image {
@@ -114,6 +109,83 @@ html.homepage-featured-topics {
           display: block;
           width: 100%;
           height: 100%;
+        }
+      }
+    }
+  }
+
+  //same effect till max-width 600px
+  &.-mobile-stacked,
+  &.-mobile-horizontal {
+    .featured-topics {
+      justify-content: flex-start;
+      @media screen and (max-width: 999px) {
+        flex-direction: row;
+        gap: 1.25em;
+        padding-bottom: 1rem; //spacing for scroll on mobile
+        overflow-x: scroll;
+        .featured-topic {
+          flex-shrink: 0;
+          margin: 0;
+          &:nth-of-type(n + 5) {
+            display: flex;
+          }
+        }
+      }
+
+      @media screen and (max-width: 800px) {
+        .featured-topic {
+          flex-basis: 45%;
+          &:nth-of-type(n + 4) {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    &.-mobile-stacked {
+      .featured-topics {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        .featured-topic {
+          flex-basis: 100%;
+          margin: 0;
+          &:nth-of-type(n + 3) {
+            display: flex;
+          }
+          &:nth-of-type(n + 2) {
+            display: flex;
+          }
+
+          h3 {
+            padding-top: 0.25em;
+          }
+        }
+      }
+    }
+    &.-mobile-horizontal {
+      .featured-topics {
+        .featured-topic {
+          flex-basis: 75%;
+
+          &:nth-of-type(n + 3) {
+            display: flex;
+          }
+          &:nth-of-type(n + 2) {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 400px) {
+    &.-mobile-horizontal {
+      .featured-topics {
+        .featured-topic {
+          flex-basis: 85%;
         }
       }
     }

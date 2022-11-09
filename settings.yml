@@ -39,6 +39,18 @@ sort_by_created:
   default: true
   description: Disable to sort by latest activity
 
+show_all_always:
+  default: false
+  description: By default the amount of shown topics is decreased with the screen size, down to only 1 on mobile. Checking this setting will show all on any screen size.
+
+mobile_style:
+  default: horizontal_scroll
+  type: enum
+  choices:
+    - horizontal_scroll
+    - stacked_on_smaller_screens
+  description: If <code>show_all_always</code> is checked, the topics will be shown via a horizontal scroll by default. You can change this behaviour on smaller screens, and choose to stack them on anything smaller than 600px.
+
 featured_content_position:
   default: discovery_list_controls_above
   type: enum

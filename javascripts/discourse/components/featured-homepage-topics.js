@@ -114,17 +114,4 @@ export default Component.extend({
       return false;
     }
   },
-
-  get mobileStyle() {
-    if (
-      settings.show_all_always &&
-      settings.mobile_style === "stacked_on_smaller_screens"
-    ) {
-      return "-mobile-stacked";
-    } else if (settings.show_all_always) {
-      return "-mobile-horizontal";
-    } else {
-      return;
-    }
-  },
 });

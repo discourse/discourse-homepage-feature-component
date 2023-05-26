@@ -11,6 +11,7 @@ export default class FeaturedHomepageTopics extends Component {
   @service router;
   @service store;
   @service siteSettings;
+  @service currentUser;
   @tracked featuredTagTopics = null;
 
   constructor() {

@@ -41,9 +41,7 @@ export default class FeaturedHomepageTopics extends Component {
             .filter(Boolean);
           return topMenuRoutes.includes(currentRoute.localName);
         case "all":
-          return !["editCategory", "admin", "full-page-search"].some((route) =>
-            currentRouteName.includes(route)
-          );
+          return !/editCategory|admin|full-page-search/.test(currentRouteName);
         default:
           return false;
       }

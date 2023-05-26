@@ -28,8 +28,7 @@ export default class FeaturedHomepageTopics extends Component {
   }
 
   get showHere() {
-    let currentRoute = this.router.currentRoute;
-    let currentRouteName = this.router.currentRouteName;
+    const { currentRoute, currentRouteName } = this.router;
 
     if (currentRoute) {
       switch (settings.show_on) {

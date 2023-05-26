@@ -1,45 +1,43 @@
-{{#if this.showFor}}
-  {{#if this.showHere}}
-    <div
-      class="custom-homepage-wrapper"
-      {{did-insert this.getBannerTopics}}
-      {{did-insert this.checkShowHere}}
-    >
-      {{#if this.featuredTagTopics}}
+{{#if (and this.showFor this.showHere)}}
+  <div
+    class="custom-homepage-wrapper"
+    {{did-insert this.getBannerTopics}}
+    {{did-insert this.checkShowHere}}
+  >
+    {{#if this.featuredTagTopics}}
 
-        <div class="custom-homepage">
-          <div class={{concat "featured-topic-wrapper" this.mobileStyle}}>
+      <div class="custom-homepage">
+        <div class={{concat-class "featured-topic-wrapper" this.mobileStyle}}>
 
-            {{#if (theme-setting "show_title")}}
-              <h2>
-                {{this.featuredTitle}}
-              </h2>
-            {{/if}}
+          {{#if (theme-setting "show_title")}}
+            <h2>
+              {{this.featuredTitle}}
+            </h2>
+          {{/if}}
 
-            <div class="featured-topics">
-              {{#each this.featuredTagTopics as |t|}}
-                <div class="featured-topic">
-                  <div
-                    class="featured-topic-image"
-                    style={{html-safe
-                      (concat "background-image: url(" t.image_url ")")
-                    }}
-                  >
-                    {{! template-lint-disable no-invalid-link-text }}
-                    <a
-                      href="/t/{{t.slug}}/{{t.id}}/{{t.last_read_post_number}}"
-                    ></a>
-                  </div>
-                  <h3>
-                    {{topic-link t}}
-                  </h3>
+          <div class="featured-topics">
+            {{#each this.featuredTagTopics as |t|}}
+              <div class="featured-topic">
+                <div
+                  class="featured-topic-image"
+                  style={{html-safe
+                    (concat "background-image: url(" t.image_url ")")
+                  }}
+                >
+                  {{! template-lint-disable no-invalid-link-text }}
+                  <a
+                    href="/t/{{t.slug}}/{{t.id}}/{{t.last_read_post_number}}"
+                  ></a>
                 </div>
-              {{/each}}
-            </div>
+                <h3>
+                  {{topic-link t}}
+                </h3>
+              </div>
+            {{/each}}
           </div>
         </div>
-      {{/if}}
-    </div>
+      </div>
+    {{/if}}
+  </div>
 
-  {{/if}}
 {{/if}}

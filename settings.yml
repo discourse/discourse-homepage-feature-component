@@ -43,6 +43,10 @@ show_all_always:
   default: false
   description: By default the amount of shown topics is decreased with the screen size, down to only 1 on mobile. Checking this setting will show all on any screen size.
 
+hide_archived_topics:
+  default: true
+  description: Hide archived topics from the featured topic list
+
 mobile_style:
   default: horizontal_scroll
   type: enum

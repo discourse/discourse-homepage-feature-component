@@ -7,7 +7,7 @@ import I18n from "I18n";
 
 const FEATURED_CLASS = "featured-homepage-topics";
 
-export default class MyComponent extends Component {
+export default class FeaturedHomepageTopics extends Component {
   @service router;
   @service store;
   @service siteSettings;

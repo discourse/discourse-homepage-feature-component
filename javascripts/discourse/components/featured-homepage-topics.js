@@ -87,26 +87,23 @@ export default class FeaturedHomepageTopics extends Component {
   }
 
   @action
-  getBannerTopics() {
-    let sortOrder = settings.sort_by_created ? "created" : "activity";
-    if (settings.featured_tag) {
-      this.store
-        .findFiltered("topicList", {
-          filter: "latest",
-          params: {
-            tags: [`${settings.featured_tag}`],
-            order: sortOrder,
-          },
-        })
-        .then((topicList) => {
-          this.featuredTagTopics = topicList.topics
-            .filter(
-              (topic) =>
-                topic.image_url &&
-                (!settings.hide_archived_topics || !topic.archived)
-            )
-            .slice(0, settings.number_of_topics);
-        });
+  async getBannerTopics() {
+    if (!settings.featured_tag) {
+      return;
     }
+
+    const sortOrder = settings.sort_by_created ? "created" : "activity";
+    const topicList = await this.store
+      .findFiltered("topicList", {
+        filter: "latest",
+        params: {
+          tags: [`${settings.featured_tag}`],
+          order: sortOrder,
+        },
+      });
+
+    this.featuredTagTopics = topicList.topics.filter((topic) =>
+      topic.image_url && (!settings.hide_archived_topics || !topic.archived)
+    ).slice(0, settings.number_of_topics);
   }
 }

@@ -11,7 +11,6 @@ export default class MyComponent extends Component {
   @service router;
   @service store;
   @service siteSettings;
-  @tracked titleElement = null;
   @tracked featuredTagTopics = null;
 
   constructor() {

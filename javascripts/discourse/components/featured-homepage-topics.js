@@ -1,109 +1,67 @@
-import discourseComputed from "discourse-common/utils/decorators";
-import Component from "@ember/component";
-import I18n from "I18n";
+import Component from "@glimmer/component";
 import { inject as service } from "@ember/service";
-import Topic from "discourse/models/topic";
+import { action } from "@ember/object";
+import { tracked } from "@glimmer/tracking";
 import { defaultHomepage } from "discourse/lib/utilities";
 
 const FEATURED_CLASS = "featured-homepage-topics";
 
-export default Component.extend({
-  classNameBindings: ["featured-homepage-topics"],
-  router: service(),
-  titleElement: null,
-  featuredTagTopics: null,
+export default class MyComponent extends Component {
+  @service router;
+  @service store;
+  @service siteSettings;
+  @tracked titleElement = null;
+  @tracked featuredTagTopics = null;
 
-  _getBanner() {
-    if (this.isDestroying || this.isDestroyed) {
-      return;
-    }
-    let sortOrder = settings.sort_by_created ? "created" : "activity";
-    if (settings.featured_tag) {
-      this.store
-        .findFiltered("topicList", {
-          filter: "latest",
-          params: {
-            tags: [`${settings.featured_tag}`],
-            order: sortOrder,
-          },
-        })
-        .then((topicList) => {
-          let featuredTagTopics = [];
+  constructor() {
+    super(...arguments);
+    this.router.on("routeDidChange", this.checkShowHere);
+  }
 
-          topicList.topics.forEach((topic) =>
-            topic.image_url ? featuredTagTopics.push(Topic.create(topic)) : ""
-          );
+  willDestroy() {
+    this.router.off("routeDidChange", this.checkShowHere);
+  }
 
-          this.set(
-            "featuredTagTopics",
-            featuredTagTopics.slice(0, settings.number_of_topics)
-          );
-        });
-    }
-  },
-
-  _checkClass() {
+  @action
+  checkShowHere() {
     if (!this.showHere) {
       document.querySelector("body").classList.remove(FEATURED_CLASS);
+    } else {
+      document.querySelector("body").classList.add(FEATURED_CLASS);
     }
-  },
+  }
 
-  init() {
-    this._super(...arguments);
-    this._getBanner();
-    this._checkClass();
-  },
-
-  didInsertElement() {
-    this.appEvents.on("page:changed", this, "_checkClass");
-  },
-
-  willDestroyElement() {
-    this.appEvents.off("page:changed", this, "_checkClass");
-    document.querySelector("body").classList.remove(FEATURED_CLASS);
-  },
-
-  @discourseComputed("router.currentRoute", "router.currentRouteName")
-  showHere(currentRoute, currentRouteName) {
-    let showHere;
+  get showHere() {
+    let currentRoute = this.router.currentRoute;
+    let currentRouteName = this.router.currentRouteName;
 
     if (currentRoute) {
-      if (settings.show_on === "homepage") {
-        showHere = currentRouteName === `discovery.${defaultHomepage()}`;
-      } else if (settings.show_on === "top_menu") {
-        const topMenuRoutes = this.siteSettings.top_menu
-          .split("|")
-          .filter(Boolean);
-        showHere = topMenuRoutes.includes(currentRoute.localName);
-      } else if (settings.show_on === "all") {
-        showHere =
-          currentRouteName.indexOf("editCategory") &&
-          currentRouteName.indexOf("admin") &&
-          currentRouteName.indexOf("full-page-search");
-      } else {
-        return false;
+      switch (settings.show_on) {
+        case "homepage":
+          return currentRouteName === `discovery.${defaultHomepage()}`;
+        case "top_menu":
+          const topMenuRoutes = this.siteSettings.top_menu
+            .split("|")
+            .filter(Boolean);
+          return topMenuRoutes.includes(currentRoute.localName);
+        case "all":
+          return !["editCategory", "admin", "full-page-search"].some((route) =>
+            currentRouteName.includes(route)
+          );
+        default:
+          return false;
       }
     }
 
-    if (showHere) {
-      document.querySelector("body").classList.add(FEATURED_CLASS);
-    }
+    return false;
+  }
 
-    return showHere;
-  },
+  get featuredTitle() {
+    // falls back to setting for backwards compatibility
+    return I18n.t(themePrefix("featured_topic_title")) || settings.title_text;
+  }
 
-  @discourseComputed()
-  showTitle() {
-    if (settings.show_title) {
-      const titleElement = document.createElement("h2");
-      titleElement.innerHTML =
-        I18n.t(themePrefix("featured_topic_title")) || settings.title_text;
-      return titleElement;
-    }
-  },
-
-  @discourseComputed()
-  showFor() {
+  get showFor() {
     if (
       settings.show_for === "everyone" ||
       (settings.show_for === "logged_out" && !this.currentUser) ||
@@ -113,7 +71,7 @@ export default Component.extend({
     } else {
       return false;
     }
-  },
+  }
 
   get mobileStyle() {
     if (
@@ -126,5 +84,29 @@ export default Component.extend({
     } else {
       return;
     }
-  },
-});
+  }
+
+  @action
+  getBannerTopics() {
+    let sortOrder = settings.sort_by_created ? "created" : "activity";
+    if (settings.featured_tag) {
+      this.store
+        .findFiltered("topicList", {
+          filter: "latest",
+          params: {
+            tags: [`${settings.featured_tag}`],
+            order: sortOrder,
+          },
+        })
+        .then((topicList) => {
+          this.featuredTagTopics = topicList.topics
+            .filter(
+              (topic) =>
+                topic.image_url &&
+                (!settings.hide_archived_topics || !topic.archived)
+            )
+            .slice(0, settings.number_of_topics);
+        });
+    }
+  }
+}

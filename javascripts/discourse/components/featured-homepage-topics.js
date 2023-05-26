@@ -3,6 +3,7 @@ import { inject as service } from "@ember/service";
 import { action } from "@ember/object";
 import { tracked } from "@glimmer/tracking";
 import { defaultHomepage } from "discourse/lib/utilities";
+import I18n from "I18n";
 
 const FEATURED_CLASS = "featured-homepage-topics";
 

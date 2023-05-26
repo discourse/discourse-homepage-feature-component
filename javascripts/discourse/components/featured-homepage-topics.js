@@ -24,11 +24,7 @@ export default class FeaturedHomepageTopics extends Component {
 
   @action
   checkShowHere() {
-    if (!this.showHere) {
-      document.querySelector("body").classList.remove(FEATURED_CLASS);
-    } else {
-      document.querySelector("body").classList.add(FEATURED_CLASS);
-    }
+    document.body.classList.toggle(FEATURED_CLASS, this.showHere);
   }
 
   get showHere() {

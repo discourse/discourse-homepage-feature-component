@@ -34,7 +34,7 @@ show_for:
 
 show_title:
   default: false
-  description: displays the text set below
+  description: displays the text set below (title is always shown when make_collapsible is on)
 
 title_text:
   default: "Featured Topics"

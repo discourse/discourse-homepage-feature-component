@@ -33,11 +33,12 @@
             (if (and toggleTopics (theme-setting "make_collapsible")) "hidden")
           }}
         >
-
           {{#if (theme-setting "show_title")}}
-            <h2>
-              {{this.featuredTitle}}
-            </h2>
+            {{#unless (theme-setting "make_collapsible")}}
+              <h2>
+                {{this.featuredTitle}}
+              </h2>
+            {{/unless}}
           {{/if}}
 
           <div class="featured-topics">

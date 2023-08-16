@@ -7,24 +7,20 @@
     {{#if this.featuredTagTopics}}
       <div class="custom-homepage">
         {{#if (theme-setting "make_collapsible")}}
-          <button
-            type="button"
-            class={{concat
+          <DButton
+            @class={{concat-class
               "featured-topic-toggle"
-              " "
               (if toggleTopics "is-open")
             }}
-            {{action "toggle"}}
+            @action={{action "toggle"}}
+            @translatedLabel="{{this.featuredTitle}}"
           >
             {{#if toggleTopics}}
               {{d-icon "angle-right"}}
             {{else}}
               {{d-icon "angle-down"}}
             {{/if}}
-            <span>
-              {{this.featuredTitle}}
-            </span>
-          </button>
+          </DButton>
         {{/if}}
 
         <div

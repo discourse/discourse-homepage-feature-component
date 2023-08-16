@@ -200,15 +200,12 @@ body:not(.staff) {
 }
 
 button.featured-topic-toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
+  .d-button-label + .d-icon {
+    order: -1;
+    margin: 0;
+  }
+  gap: 0.35em;
   width: 100%;
-  padding: 0.75em 0;
-  margin-bottom: 1.5em;
-  border: none;
-  border-bottom: 1px solid var(--primary-low);
-  background: none;
-  font-weight: 600;
   justify-content: flex-start;
+  margin-bottom: 1.5em;
 }

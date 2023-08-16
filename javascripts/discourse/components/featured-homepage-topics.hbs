@@ -8,6 +8,7 @@
       <div class="custom-homepage">
         {{#if (theme-setting "make_collapsible")}}
           <button
+            type="button"
             class={{concat
               "featured-topic-toggle"
               " "
@@ -33,12 +34,15 @@
             (if (and toggleTopics (theme-setting "make_collapsible")) "hidden")
           }}
         >
-          {{#if (theme-setting "show_title")}}
-            {{#unless (theme-setting "make_collapsible")}}
-              <h2>
-                {{this.featuredTitle}}
-              </h2>
-            {{/unless}}
+          {{#if
+            (and
+              (theme-setting "show_title")
+              (not (theme-setting "make_collapsible"))
+            )
+          }}
+            <h2>
+              {{this.featuredTitle}}
+            </h2>
           {{/if}}
 
           <div class="featured-topics">

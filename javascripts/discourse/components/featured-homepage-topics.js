@@ -16,14 +16,14 @@ export default class FeaturedHomepageTopics extends Component {
   @tracked toggleTopics =
     localStorage.getItem(this.toggleTopicsState) === "true" || false;
 
-  toggle() {
-    this.toggleTopics = !this.toggleTopics;
-    localStorage.setItem(this.toggleTopicsState, this.toggleTopics);
-  }
-
   constructor() {
     super(...arguments);
     this.router.on("routeDidChange", this.checkShowHere);
+  }
+
+  toggle() {
+    this.toggleTopics = !this.toggleTopics;
+    localStorage.setItem(this.toggleTopicsState, this.toggleTopics);
   }
 
   willDestroy() {

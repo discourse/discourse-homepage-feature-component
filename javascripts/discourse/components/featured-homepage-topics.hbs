@@ -13,7 +13,7 @@
               (if toggleTopics "is-open")
             }}
             @action={{action "toggle"}}
-            @translatedLabel="{{this.featuredTitle}}"
+            @translatedLabel={{this.featuredTitle}}
           >
             {{#if toggleTopics}}
               {{d-icon "angle-right"}}

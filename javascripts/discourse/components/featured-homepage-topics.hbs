@@ -5,9 +5,34 @@
     {{did-insert this.checkShowHere}}
   >
     {{#if this.featuredTagTopics}}
-
       <div class="custom-homepage">
-        <div class={{concat-class "featured-topic-wrapper" this.mobileStyle}}>
+        {{#if (theme-setting "make_collapsible")}}
+          <button
+            class={{concat
+              "featured-topic-toggle"
+              " "
+              (if toggleTopics "is-open")
+            }}
+            {{action "toggle"}}
+          >
+            {{#if toggleTopics}}
+              {{d-icon "angle-right"}}
+            {{else}}
+              {{d-icon "angle-down"}}
+            {{/if}}
+            <span>
+              {{this.featuredTitle}}
+            </span>
+          </button>
+        {{/if}}
+
+        <div
+          class={{concat-class
+            "featured-topic-wrapper"
+            this.mobileStyle
+            (if (and toggleTopics (theme-setting "make_collapsible")) "hidden")
+          }}
+        >
 
           {{#if (theme-setting "show_title")}}
             <h2>

@@ -198,3 +198,13 @@ body:not(.staff) {
     display: none;
   }
 }
+
+button.featured-topic-toggle {
+  .d-button-label + .d-icon {
+    order: -1;
+    margin: 0;
+  }
+  gap: 0.35em;
+  justify-content: flex-start;
+  margin-bottom: 1.5em;
+}

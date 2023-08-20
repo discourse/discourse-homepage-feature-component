@@ -12,11 +12,21 @@ export default class FeaturedHomepageTopics extends Component {
   @service store;
   @service siteSettings;
   @service currentUser;
+  @service keyValueStore;
+
   @tracked featuredTagTopics = null;
+  @tracked toggleTopics =
+    this.keyValueStore.getItem("toggleTopicsState") === "true" || false;
 
   constructor() {
     super(...arguments);
     this.router.on("routeDidChange", this.checkShowHere);
+  }
+
+  @action
+  toggle() {
+    this.toggleTopics = !this.toggleTopics;
+    this.keyValueStore.setItem("toggleTopicsState", this.toggleTopics);
   }
 
   willDestroy() {

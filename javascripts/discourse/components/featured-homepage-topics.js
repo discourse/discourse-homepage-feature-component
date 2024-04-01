@@ -119,7 +119,7 @@ export default class FeaturedHomepageTopics extends Component {
     this.featuredTagTopics = topicList.topics
       .filter(
         (topic) =>
-          topic.image_url && (!settings.hide_closed_topics || !topic.closed),
+          topic.image_url && (!settings.hide_closed_topics || !topic.closed)
       )
       .slice(0, settings.number_of_topics);
   }

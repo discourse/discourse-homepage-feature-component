@@ -51,12 +51,17 @@
                   }}
                 >
                   {{! template-lint-disable no-invalid-link-text }}
-                  <a
-                    href="/t/{{t.slug}}/{{t.id}}/{{t.last_read_post_number}}"
-                  ></a>
+                  <a href={{this.topicHref t}}></a>
                 </div>
                 <h3>
-                  {{topic-link t}}
+                  <a
+                    href={{this.topicHref t}}
+                    role="heading"
+                    aria-level="2"
+                    data-topic-id={{t.id}}
+                  >
+                    {{html-safe (this.emojiTitle t.fancy_title)}}
+                  </a>
                 </h3>
               </div>
             {{/each}}

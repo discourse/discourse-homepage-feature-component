@@ -4,6 +4,7 @@ import { action } from "@ember/object";
 import { tracked } from "@glimmer/tracking";
 import { defaultHomepage } from "discourse/lib/utilities";
 import I18n from "I18n";
+import { emojiUnescape } from "discourse/lib/text";
 
 const FEATURED_CLASS = "featured-homepage-topics";
 
@@ -90,6 +91,16 @@ export default class FeaturedHomepageTopics extends Component {
     }
   }
 
+  emojiTitle(t) {
+    return emojiUnescape(t);
+  }
+
+  topicHref(t) {
+    return `/t/${t.slug}/${t.id}/${
+      settings.always_link_to_first_post ? "" : t.last_read_post_number
+    }`;
+  }
+
   @action
   async getBannerTopics() {
     if (!settings.featured_tag) {
@@ -108,7 +119,7 @@ export default class FeaturedHomepageTopics extends Component {
     this.featuredTagTopics = topicList.topics
       .filter(
         (topic) =>
-          topic.image_url && (!settings.hide_closed_topics || !topic.closed)
+          topic.image_url && (!settings.hide_closed_topics || !topic.closed),
       )
       .slice(0, settings.number_of_topics);
   }

@@ -8,7 +8,7 @@
       <div class="custom-homepage">
         {{#if (theme-setting "make_collapsible")}}
           <DButton
-            @class={{concat-class
+            class={{concat-class
               "featured-topic-toggle"
               (if toggleTopics "is-open")
             }}

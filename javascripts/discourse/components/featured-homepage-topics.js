@@ -1,10 +1,10 @@
 import Component from "@glimmer/component";
-import { inject as service } from "@ember/service";
-import { action } from "@ember/object";
 import { tracked } from "@glimmer/tracking";
+import { action } from "@ember/object";
+import { inject as service } from "@ember/service";
+import { emojiUnescape } from "discourse/lib/text";
 import { defaultHomepage } from "discourse/lib/utilities";
 import I18n from "I18n";
-import { emojiUnescape } from "discourse/lib/text";
 
 const FEATURED_CLASS = "featured-homepage-topics";
 
@@ -16,7 +16,8 @@ export default class FeaturedHomepageTopics extends Component {
   @service keyValueStore;
 
   @tracked featuredTagTopics = null;
-  @tracked toggleTopics =
+  @tracked
+  toggleTopics =
     this.keyValueStore.getItem("toggleTopicsState") === "true" || false;
 
   constructor() {
@@ -31,6 +32,7 @@ export default class FeaturedHomepageTopics extends Component {
   }
 
   willDestroy() {
+    super.willDestroy(...arguments);
     this.router.off("routeDidChange", this.checkShowHere);
   }
 

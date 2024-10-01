@@ -5,3 +5,6 @@
 # https://translate.discourse.org/
 
 he:
+  theme_metadata:
+    settings:
+      number_of_topics: הצגת עד 5 נושאים ברוחב המרבי (max-width)

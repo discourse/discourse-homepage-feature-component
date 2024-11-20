@@ -26,15 +26,15 @@ export default class FeaturedHomepageTopics extends Component {
     this.router.on("routeDidChange", this.checkShowHere);
   }
 
+  willDestroy() {
+    super.willDestroy(...arguments);
+    this.router.off("routeDidChange", this.checkShowHere);
+  }
+
   @action
   toggle() {
     this.toggleTopics = !this.toggleTopics;
     this.keyValueStore.setItem("toggleTopicsState", this.toggleTopics);
-  }
-
-  willDestroy() {
-    super.willDestroy(...arguments);
-    this.router.off("routeDidChange", this.checkShowHere);
   }
 
   @action

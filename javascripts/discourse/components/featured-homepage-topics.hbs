@@ -10,12 +10,12 @@
           <DButton
             class={{concat-class
               "featured-topic-toggle"
-              (if toggleTopics "is-open")
+              (if this.toggleTopics "is-open")
             }}
             @action={{action "toggle"}}
             @translatedLabel={{this.featuredTitle}}
           >
-            {{#if toggleTopics}}
+            {{#if this.toggleTopics}}
               {{d-icon "angle-right"}}
             {{else}}
               {{d-icon "angle-down"}}
@@ -27,7 +27,10 @@
           class={{concat-class
             "featured-topic-wrapper"
             this.mobileStyle
-            (if (and toggleTopics (theme-setting "make_collapsible")) "hidden")
+            (if
+              (and this.toggleTopics (theme-setting "make_collapsible"))
+              "hidden"
+            )
           }}
         >
           {{#if

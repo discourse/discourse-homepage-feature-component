@@ -1,0 +1,20 @@
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
+#
+# To work with us on translations, join this project:
+# https://translate.discourse.org/
+
+tr_TR:
+  theme_metadata:
+    settings:
+      number_of_topics: Maksimum genişlikte en fazla 5 konu göster
+      hide_featured_tag: Etkinleştirildiğinde, yukarıda ayarlanan "öne çıkan etiket" etiketi, konuları görüntülerken normal kullanıcılar tarafından görülemez.
+      show_on: top_menu <a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">üst menü site ayarı</a> bölümünde ayarlanan sayfaları ifade eder
+      make_collapsible: Tüm bileşeni daraltılabilir hâle getir
+      show_title: Aşağıda ayarlanan metni görüntüler (make_collapsible açık olduğunda başlık her zaman gösterilir)
+      sort_by_created: Son etkinliğe göre sıralamayı devre dışı bırak
+      show_all_always: Varsayılan olarak gösterilen konu sayısı ekran boyutuyla birlikte azalır, mobilde yalnızca 1'e düşer. Bu ayarı işaretlemek her ekran boyutunda tümünü gösterir.
+      hide_closed_topics: Kapalı konuları öne çıkan konu listesinden gizle
+      always_link_to_first_post: Konunun ilk gönderisine her zaman bağlantı ver, daha önce okunmuş olsa bile
+      mobile_style: <code>show_all_always</code> işaretliyse konular varsayılan olarak yatay kaydırma yoluyla gösterilir. Bu davranışı daha küçük ekranlarda değiştirebilir ve bunları 600 pikselden daha küçük herhangi bir şeye yığmayı seçebilirsiniz.
+      featured_content_position: Gelişmiş tema geliştirme&colon; bu, bileşen için eklenti çıkışını değiştirir

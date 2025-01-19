@@ -1,0 +1,20 @@
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
+#
+# To work with us on translations, join this project:
+# https://translate.discourse.org/
+
+fi:
+  theme_metadata:
+    settings:
+      number_of_topics: Näytä enintään 5 ketjua enimmäisleveydellä
+      hide_featured_tag: Kun tämä on käytössä, edellä asetettu "featured tag" -tunniste ei näy tavallisille käyttäjille tarkasteltaessa ketjuja.
+      show_on: Top_menu viittaa sivuihin, jotka on asetettu <a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">ylävalikon sivustoasetuksissa</a>
+      make_collapsible: Tee koko komponentista tiivistettävä
+      show_title: näyttää alla asetetun tekstin (otsikko näytetään aina, kun make_collapsible on käytössä)
+      sort_by_created: Poista käytöstä lajitellaksesi viimeisimmän toiminnan mukaan
+      show_all_always: Näytettävien ketjujen määrää pienennetään oletuksena näytön koon mukaan, vain yhteen mobiililaitteilla. Tämän asetuksen valitseminen näyttää kaiken minkä tahansa kokoisella näytöllä.
+      hide_closed_topics: Piilota suljetut ketjut ketjuluettelosta
+      always_link_to_first_post: Linkitä aina ketjun ensimmäiseen viestiin, vaikka se olisikin jo luettu
+      mobile_style: Jos <code>show_all_always</code> on valittuna, ketjut näytetään oletuksena vaakasuuntaisella vierityksellä. Voit muuttaa tätä toimintaa pienemmillä näytöillä ja pinota ne 600:aa pikseliä pienemmillä näytöillä.
+      featured_content_position: Kehittynyt teeman kehitys&colon; tämä muuttaa komponentin lisäosaulostuloa

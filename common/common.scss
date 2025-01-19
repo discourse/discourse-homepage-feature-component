@@ -7,7 +7,7 @@ html.homepage-featured-topics {
 .featured-topic-wrapper {
   margin-bottom: 3em;
   text-align: center;
-  border-bottom: 1px solid $primary-low;
+  border-bottom: 1px solid var(--primary-low);
   position: relative;
 
   .spinner {
@@ -25,7 +25,7 @@ html.homepage-featured-topics {
     margin-top: 1em;
   }
   h2 {
-    border-bottom: 1px solid $primary-low;
+    border-bottom: 1px solid var(--primary-low);
     padding-bottom: 0.5em;
     margin-bottom: 1.5em;
   }
@@ -33,9 +33,7 @@ html.homepage-featured-topics {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    @media screen and (max-width: 600px) {
-      flex-wrap: wrap;
-    }
+
     .featured-topic {
       flex: 1 1 30%;
       max-width: 500px;
@@ -81,9 +79,9 @@ html.homepage-featured-topics {
           display: none;
         }
       }
+
       @media screen and (max-width: 450px) {
         width: 100%;
-        margin: 0;
         &:nth-of-type(n + 2) {
           display: none;
         }
@@ -91,7 +89,8 @@ html.homepage-featured-topics {
       h3 {
         margin: 0;
         padding: 1em 0 1.5em;
-        font-size: $font-up-2;
+        font-size: var(--font-up-2);
+        padding: 0.5em 1em 1em 1em;
         a {
           display: -webkit-box;
           overflow: hidden;
@@ -99,9 +98,6 @@ html.homepage-featured-topics {
           word-wrap: break-word;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
-        }
-        @media screen and (max-width: 450px) {
-          padding: 1em 0 1em;
         }
       }
       .featured-topic-image {
@@ -118,6 +114,83 @@ html.homepage-featured-topics {
       }
     }
   }
+
+  //same effect till max-width 600px
+  &.-mobile-stacked,
+  &.-mobile-horizontal {
+    .featured-topics {
+      justify-content: flex-start;
+      @media screen and (max-width: 999px) {
+        flex-direction: row;
+        gap: 1.25em;
+        padding-bottom: 1rem; //spacing for scroll on mobile
+        overflow-x: scroll;
+        .featured-topic {
+          flex-shrink: 0;
+          margin: 0;
+          &:nth-of-type(n + 5) {
+            display: flex;
+          }
+        }
+      }
+
+      @media screen and (max-width: 800px) {
+        .featured-topic {
+          flex-basis: 45%;
+          &:nth-of-type(n + 4) {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    &.-mobile-stacked {
+      .featured-topics {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        .featured-topic {
+          flex-basis: 100%;
+          margin: 0;
+          &:nth-of-type(n + 3) {
+            display: flex;
+          }
+          &:nth-of-type(n + 2) {
+            display: flex;
+          }
+
+          h3 {
+            padding-top: 0.25em;
+          }
+        }
+      }
+    }
+    &.-mobile-horizontal {
+      .featured-topics {
+        .featured-topic {
+          flex-basis: 75%;
+
+          &:nth-of-type(n + 3) {
+            display: flex;
+          }
+          &:nth-of-type(n + 2) {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 400px) {
+    &.-mobile-horizontal {
+      .featured-topics {
+        .featured-topic {
+          flex-basis: 85%;
+        }
+      }
+    }
+  }
 }
 
 body:not(.staff) {
@@ -125,4 +198,14 @@ body:not(.staff) {
   [data-tag-name="#{$featured-tag}"] {
     display: none;
   }
+}
+
+button.featured-topic-toggle {
+  .d-button-label + .d-icon {
+    order: -1;
+    margin: 0;
+  }
+  gap: 0.35em;
+  justify-content: flex-start;
+  margin-bottom: 1.5em;
 }

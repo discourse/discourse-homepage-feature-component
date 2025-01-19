@@ -5,11 +5,9 @@ number_of_topics:
   default: 3
   min: 1
   max: 5
-  description: Display up to 5 topics at max-width
 
 hide_featured_tag:
   default: false
-  description: When this is enabled the featured tag will be hidden from users that aren't admins/moderators.
 
 show_on:
   default: homepage
@@ -18,7 +16,6 @@ show_on:
     - top_menu
     - homepage
     - all
-  description: top_menu refers to the <a href="/admin/site_settings/category/all_results?filter=top_menu">top menu site setting</a> </br> when set to all, enable	&ldquo;above main container&rdquo; below.
 
 show_for:
   default: everyone
@@ -28,6 +25,9 @@ show_for:
     - logged_in
     - logged_out
 
+make_collapsible:
+  default: false
+
 show_title:
   default: false
 
@@ -36,8 +36,27 @@ title_text:
 
 sort_by_created:
   default: true
-  description: Disable to sort by latest activity
 
-above_main_container:
+show_all_always:
   default: false
-  description: "Advanced: this changes the plugin outlet for the component. Enable if you've set &ldquo;show on&rdquo; to &ldquo;all&rdquo;"
+
+hide_closed_topics:
+  default: false
+
+always_link_to_first_post:
+  default: false
+
+mobile_style:
+  default: horizontal_scroll
+  type: enum
+  choices:
+    - horizontal_scroll
+    - stacked_on_smaller_screens
+
+featured_content_position:
+  default: discovery_list_controls_above
+  type: enum
+  choices:
+    - above_main_container
+    - below_discovery_categories
+    - discovery_list_controls_above

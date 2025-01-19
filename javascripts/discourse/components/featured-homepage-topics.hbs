@@ -1,0 +1,77 @@
+{{#if (and this.showFor this.showHere)}}
+  <div
+    class="custom-homepage-wrapper"
+    {{did-insert this.getBannerTopics}}
+    {{did-insert this.checkShowHere}}
+  >
+    {{#if this.featuredTagTopics}}
+      <div class="custom-homepage">
+        {{#if (theme-setting "make_collapsible")}}
+          <DButton
+            class={{concat-class
+              "featured-topic-toggle"
+              (if this.toggleTopics "is-open")
+            }}
+            @action={{action "toggle"}}
+            @translatedLabel={{this.featuredTitle}}
+          >
+            {{#if this.toggleTopics}}
+              {{d-icon "angle-right"}}
+            {{else}}
+              {{d-icon "angle-down"}}
+            {{/if}}
+          </DButton>
+        {{/if}}
+
+        <div
+          class={{concat-class
+            "featured-topic-wrapper"
+            this.mobileStyle
+            (if
+              (and this.toggleTopics (theme-setting "make_collapsible"))
+              "hidden"
+            )
+          }}
+        >
+          {{#if
+            (and
+              (theme-setting "show_title")
+              (not (theme-setting "make_collapsible"))
+            )
+          }}
+            <h2>
+              {{this.featuredTitle}}
+            </h2>
+          {{/if}}
+
+          <div class="featured-topics">
+            {{#each this.featuredTagTopics as |t|}}
+              <div class="featured-topic">
+                <div
+                  class="featured-topic-image"
+                  style={{html-safe
+                    (concat "background-image: url(" t.image_url ")")
+                  }}
+                >
+                  {{! template-lint-disable no-invalid-link-text }}
+                  <a href={{this.topicHref t}}></a>
+                </div>
+                <h3>
+                  <a
+                    href={{this.topicHref t}}
+                    role="heading"
+                    aria-level="2"
+                    data-topic-id={{t.id}}
+                  >
+                    {{html-safe (this.emojiTitle t.fancy_title)}}
+                  </a>
+                </h3>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+
+{{/if}}

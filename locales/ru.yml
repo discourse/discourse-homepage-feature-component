@@ -1,0 +1,20 @@
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
+#
+# To work with us on translations, join this project:
+# https://translate.discourse.org/
+
+ru:
+  theme_metadata:
+    settings:
+      number_of_topics: Показывает до 5 тем при достижении максимальной ширины
+      hide_featured_tag: Если этот параметр включен, установленный выше тег "featured tag" будет невидим для обычных пользователей при просмотре тем.
+      show_on: top_menu относится к страницам, заданным в <a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">настройках верхнего меню сайта</a>
+      make_collapsible: Делает весь компонент сворачиваемым
+      show_title: отображает текст, заданный ниже (заголовок всегда отображается, если включен параметр make_collapsible)
+      sort_by_created: Отключает сортировку по последней активности
+      show_all_always: По умолчанию количество отображаемых тем уменьшается с размером экрана, до 1 на мобильном устройстве. Если включить этот параметр, все темы будут отображаться на экране любого размера.
+      hide_closed_topics: Скрывает закрытые темы из списка избранных тем
+      always_link_to_first_post: Всегда ссылается на первую публикацию в теме, даже если она уже была прочитана ранее
+      mobile_style: Если включен параметр <code>show_all_always</code>, темы будут отображаться с помощью горизонтальной прокрутки по умолчанию. Вы можете изменить это поведение на экранах меньшего размера и выбрать их отображение в столбик на экранах шириной менее 600 пикселей.
+      featured_content_position: Расширенная разработка темы&colon; изменяет точку подключения плагина для компонента

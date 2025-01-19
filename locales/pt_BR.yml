@@ -1,0 +1,20 @@
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
+#
+# To work with us on translations, join this project:
+# https://translate.discourse.org/
+
+pt_BR:
+  theme_metadata:
+    settings:
+      number_of_topics: Exibir até 5 tópicos com tamanho máximo
+      hide_featured_tag: Quando ativada, a "etiqueta em destaque" definida acima será oculta de usuários(as) comuns quando os tópicos forem visualizados.
+      show_on: top_menu indica as páginas definidas na <a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">configuração do site no menu superior</a>
+      make_collapsible: Fazer o componente poder ser recolhido
+      show_title: exibe o texto definido abaixo (o tíbulo sempre é mostrado quando make_collapsible estiver habilitado)
+      sort_by_created: Desativar para classificar por atividade mais recente
+      show_all_always: Por padrão, a quantidade de tópicos mostrados diminui conforme o tamanho da tela, com limite de 1 para dispositivos móveis. Marque esta opção para mostrar tudo em qualquer tamanho de tela.
+      hide_closed_topics: Ocultar tópicos fechados da lista de tópicos em destaque
+      always_link_to_first_post: Sempre vincular a primeira postagem no tópico, mesmo quando já tiver sido lida
+      mobile_style: Se <code>show_all_always</code> estiver marcado, os tópicos serão exibidos através da rolagem horizontal padrão. Você pode alterar esse comportamento em telas menores e optar por acumular tudo em qualquer coisa com menos de 600px.
+      featured_content_position: Desenvolvimento de tema avançado&colon; muda a saída do plugin para este componente

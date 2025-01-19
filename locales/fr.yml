@@ -1,0 +1,20 @@
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
+#
+# To work with us on translations, join this project:
+# https://translate.discourse.org/
+
+fr:
+  theme_metadata:
+    settings:
+      number_of_topics: Afficher jusqu'à 5 sujets à la largeur maximale
+      hide_featured_tag: Lorsque cette option est activée, l'étiquette « étiquette en vedette » définie ci-dessus sera invisible pour les utilisateurs normaux lorsqu'ils consulteront des sujets.
+      show_on: top_menu fait référence aux pages définies dans le paramètre de site <a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">top menu</a>
+      make_collapsible: Rendre l'ensemble du composant rabattable
+      show_title: affiche le texte défini ci-dessous (le titre est toujours affiché lorsque make_collapsible est activé)
+      sort_by_created: Désactiver le tri par dernière activité
+      show_all_always: Par défaut, le nombre de sujets affichés est réduit en fonction de la taille de l'écran, jusqu'à 1 seul sur mobile. Si vous cochez ce paramètre, tout s'affichera sur n'importe quelle taille d'écran.
+      hide_closed_topics: Masquer les sujets fermés de la liste des sujets en vedette
+      always_link_to_first_post: Toujours créer un lien vers le premier message dans le sujet, même s'il a été lu avant
+      mobile_style: Si <code>show_all_always</code> est cochée, les sujets seront affichés par défaut via un défilement horizontal. Vous pouvez modifier ce comportement sur des écrans plus petits et choisir de les empiler sur tout écran inférieur à 600 pixels.
+      featured_content_position: Développement de thème avancé&colon; cela modifie la sortie de l'extension pour le composant

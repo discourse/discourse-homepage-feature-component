@@ -1,0 +1,20 @@
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
+#
+# To work with us on translations, join this project:
+# https://translate.discourse.org/
+
+zh_CN:
+  theme_metadata:
+    settings:
+      number_of_topics: 以 max-width 显示最多 5 个话题
+      hide_featured_tag: 启用后，常规用户在查看话题时将看不到上面设置的“精选标签”。
+      show_on: top_menu 是指在<a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">顶部菜单网站设置</a>中设置的页面。
+      make_collapsible: 将整个组件设为可折叠
+      show_title: 在下方显示设置的文本（当 make_collapsible 处于开启状态时，始终显示标题）
+      sort_by_created: 禁用以按最新活动排序
+      show_all_always: 默认情况下，显示的话题数量会随着屏幕的减小而减少，在移动设备上仅显示 1 个话题。选中此设置后，无论屏幕大小如何，都将显示所有内容。
+      hide_closed_topics: 在精选话题列表中隐藏已关闭的话题
+      always_link_to_first_post: 始终链接到话题中的第一个帖子，即使之前已经读过
+      mobile_style: 如果选中 <code>show_all_always</code>，则默认情况下，将通过水平滚动的方式显示话题。在较小的屏幕上，可以更改此行为，并选择在任何小于 600px 的屏幕上将其堆叠放置。
+      featured_content_position: 高级主题开发：这会更改组件的插件出口

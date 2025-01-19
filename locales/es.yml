@@ -1,0 +1,20 @@
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
+#
+# To work with us on translations, join this project:
+# https://translate.discourse.org/
+
+es:
+  theme_metadata:
+    settings:
+      number_of_topics: Mostrar hasta 5 temas con anchura máxima
+      hide_featured_tag: Cuando esté activada, la etiqueta «etiqueta destacada» establecida anteriormente será invisible para los usuarios normales cuando vean los temas.
+      show_on: top_menu se refiere a las páginas definidas en los <a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">ajustes del sitio del menú superior</a>
+      make_collapsible: Hacer que todo el componente sea plegable
+      show_title: muestra el texto establecido a continuación (el título siempre se muestra cuando make_collapsible está activado)
+      sort_by_created: Desactivar la clasificación por actividad más reciente
+      show_all_always: Por defecto, la cantidad de temas mostrados disminuye con el tamaño de la pantalla, hasta solo 1 en móvil. Si activas esta opción, se mostrarán todos en cualquier tamaño de pantalla.
+      hide_closed_topics: Ocultar temas cerrados de la lista de temas destacados
+      always_link_to_first_post: Enlaza siempre al primer mensaje del tema, aunque ya se haya leído antes
+      mobile_style: Si <code>show_all_always</code> está marcado, los temas se mostrarán por defecto mediante un desplazamiento horizontal. Puedes cambiar este comportamiento en pantallas más pequeñas, y elegir apilarlos en cualquier pantalla inferior a 600px.
+      featured_content_position: Desarrollo avanzado del tema&colon; esto cambia la salida del plugin para el componente

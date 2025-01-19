@@ -1,6 +1,6 @@
 {
-  "name": "discourse-homepage-feature-component",
+  "name": "Homepage Feature",
+  "component": true,
   "about_url": "https://meta.discourse.org/t/homepage-feature-component/144264",
-  "license_url": null,
-  "component": true
+  "license_url": "https://github.com/discourse/discourse-homepage-feature-component/blob/main/LICENSE"
 }

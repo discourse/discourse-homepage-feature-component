@@ -1,0 +1,20 @@
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
+#
+# To work with us on translations, join this project:
+# https://translate.discourse.org/
+
+ar:
+  theme_metadata:
+    settings:
+      number_of_topics: عرض ما يصل إلى 5 موضوعات بأقصى عرض
+      hide_featured_tag: عند التفعيل، سيصبح الوسم "وسم مميز" المحدَّد أعلاه غير مرئي للمستخدمين العاديين عند عرض الموضوعات.
+      show_on: يشير top_menu إلى الصفحات المحدَّدة في <a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">إعداد القائمة العلوية للموقع</a>
+      make_collapsible: جعل المكوِّن بأكمله قابلًا للطي
+      show_title: يعرض مجموعة النصوص أدناه (يتم عرض العنوان دائمًا عند تشغيل make_collapsible)
+      sort_by_created: التعطيل للفرز حسب النشاط الأخير
+      show_all_always: بشكلٍ افتراضي، يتم تقليل عدد الموضوعات المعروضة مع حجم الشاشة إلى موضوعٍ واحدٍ فقط على الجوَّال. سيؤدي تحديد هذا الإعداد إلى عرض جميع الموضوعات على أي حجم شاشة.
+      hide_closed_topics: إخفاء الموضوعات المغلقة من قائمة الموضوعات المميزة
+      always_link_to_first_post: تضمين رابط إلى المنشور الأول في الموضوع دائمًا، حتى لو تمت قراءته من قبل
+      mobile_style: إذا تم تحديد <code>show_all_always</code> ، فسيتم عرض الموضوعات عبر التمرير الأفقي بشكلٍ افتراضي. يمكنك تغيير هذا السلوك على الشاشات الأصغر حجمًا، واختيار تكديسها على أي شيء أصغر من 600 بكسل.
+      featured_content_position: تطوير موضوع متقدم&colon; يؤدي هذا الإعداد إلى تغيير منفذ المكوِّن الإضافي للمكوِّن

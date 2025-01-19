@@ -1,0 +1,20 @@
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
+#
+# To work with us on translations, join this project:
+# https://translate.discourse.org/
+
+ja:
+  theme_metadata:
+    settings:
+      number_of_topics: 最大幅で最大 5 つのトピックを表示する
+      hide_featured_tag: 有効にすると、上記で設定した「注目のタグ」タグは、通常のユーザーがトピックを表示する際に非表示になります。
+      show_on: top_menu とは、<a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">トップメニューサイト設定</a>で設定されたページです
+      make_collapsible: コンポーネント全体を折りたたみ可能にする
+      show_title: 以下に設定するテキストを表示する (make_collapsible がオンの場合、タイトルは常に表示されます)
+      sort_by_created: 最新のアクティビティでの並べ替えを無効にする
+      show_all_always: デフォルトでは、表示されるトピック数は画面サイズに応じて減少し、モバイルでは 1 つになります。この設定をオンにすると、どの画面サイズでもすべてが表示されるようになります。
+      hide_closed_topics: 注目のトピックリストからクローズされたトピックを非表示にする
+      always_link_to_first_post: 既読であっても、常にトピックの最初の投稿にリンクする
+      mobile_style: <code>show_all_always</code> がオンの場合、トピックはデフォルトで横方向のスクロールで表示されます。小さい画面ではこの動作を変更でき、600px 未満の画面ではスタックすることもできます。
+      featured_content_position: 高度なテーマ開発&colon; これにより、コンポーネントのプラグインアウトレットが変更されます

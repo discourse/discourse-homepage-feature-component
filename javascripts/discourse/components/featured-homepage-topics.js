@@ -2,10 +2,10 @@ import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { action } from "@ember/object";
 import { service } from "@ember/service";
+import getURL from "discourse/lib/get-url";
 import { emojiUnescape } from "discourse/lib/text";
 import { defaultHomepage } from "discourse/lib/utilities";
-import getURL from "discourse-common/lib/get-url";
-import I18n from "I18n";
+import { i18n } from "discourse-i18n";
 
 const FEATURED_CLASS = "featured-homepage-topics";
 
@@ -66,7 +66,7 @@ export default class FeaturedHomepageTopics extends Component {
 
   get featuredTitle() {
     // falls back to setting for backwards compatibility
-    return I18n.t(themePrefix("featured_topic_title")) || settings.title_text;
+    return i18n(themePrefix("featured_topic_title")) || settings.title_text;
   }
 
   get showFor() {

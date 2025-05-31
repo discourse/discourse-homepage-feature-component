@@ -10,7 +10,7 @@ html.homepage-featured-topics {
   border-bottom: 1px solid var(--primary-low);
   position: relative;
 
-  @media screen and (max-width: 450px) {
+  @media screen and (width <= 450px) {
     margin-top: 1em;
   }
 
@@ -22,7 +22,7 @@ html.homepage-featured-topics {
     margin-left: auto;
     margin-right: auto;
 
-    @media screen and (max-width: 450px) {
+    @media screen and (width <= 450px) {
       top: 70px;
     }
   }
@@ -46,7 +46,7 @@ html.homepage-featured-topics {
       align-items: center;
       justify-content: center;
 
-      @media screen and (min-width: 451px) {
+      @media screen and (width >= 451px) {
         margin: 0 1.25em;
 
         &:first-of-type:not(:last-of-type) {
@@ -58,7 +58,7 @@ html.homepage-featured-topics {
         }
       }
 
-      @media screen and (max-width: 999px) {
+      @media screen and (width <= 999px) {
         &:nth-of-type(4) {
           margin-right: 0;
         }
@@ -68,7 +68,7 @@ html.homepage-featured-topics {
         }
       }
 
-      @media screen and (max-width: 800px) {
+      @media screen and (width <= 800px) {
         &:nth-of-type(3) {
           margin-right: 0;
         }
@@ -78,7 +78,7 @@ html.homepage-featured-topics {
         }
       }
 
-      @media screen and (max-width: 600px) {
+      @media screen and (width <= 600px) {
         width: 100%;
 
         &:nth-of-type(2) {
@@ -90,7 +90,7 @@ html.homepage-featured-topics {
         }
       }
 
-      @media screen and (max-width: 450px) {
+      @media screen and (width <= 450px) {
         width: 100%;
 
         &:nth-of-type(n + 2) {
@@ -135,7 +135,7 @@ html.homepage-featured-topics {
     .featured-topics {
       justify-content: flex-start;
 
-      @media screen and (max-width: 999px) {
+      @media screen and (width <= 999px) {
         flex-direction: row;
         gap: 1.25em;
         padding-bottom: 1rem; // spacing for scroll on mobile
@@ -151,7 +151,7 @@ html.homepage-featured-topics {
         }
       }
 
-      @media screen and (max-width: 800px) {
+      @media screen and (width <= 800px) {
         .featured-topic {
           flex-basis: 45%;
 
@@ -163,7 +163,7 @@ html.homepage-featured-topics {
     }
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (width <= 600px) {
     &.-mobile-stacked {
       .featured-topics {
         flex-direction: column;
@@ -206,7 +206,7 @@ html.homepage-featured-topics {
     }
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (width <= 400px) {
     &.-mobile-horizontal {
       .featured-topics {
         .featured-topic {

@@ -1,6 +1,6 @@
 import Component from "@ember/component";
-import FeaturedHomepageTopics from "_fake_theme/discourse/components/featured-homepage-topics";
 import { classNames } from "@ember-decorators/component";
+import FeaturedHomepageTopics from "../../components/featured-homepage-topics";
 
 @classNames("discovery-list-controls-above-outlet", "homepage-featured-topics")
 export default class HomepageFeaturedTopics extends Component {

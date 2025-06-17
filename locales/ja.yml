@@ -9,7 +9,7 @@ ja:
     settings:
       number_of_topics: 最大幅で最大 5 つのトピックを表示する
       hide_featured_tag: 有効にすると、上記で設定した「注目のタグ」タグは、通常のユーザーがトピックを表示する際に非表示になります。
-      show_on: top_menu とは、<a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">トップメニューサイト設定</a>で設定されたページです
+      show_on: top_menu とは、<a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">トップメニューサイト設定</a>で設定されたページです
       make_collapsible: コンポーネント全体を折りたたみ可能にする
       show_title: 以下に設定するテキストを表示する (make_collapsible がオンの場合、タイトルは常に表示されます)
       sort_by_created: 最新のアクティビティでの並べ替えを無効にする

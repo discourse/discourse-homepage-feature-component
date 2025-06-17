@@ -9,7 +9,7 @@ pt_BR:
     settings:
       number_of_topics: Exibir até 5 tópicos com tamanho máximo
       hide_featured_tag: Quando ativada, a "etiqueta em destaque" definida acima será oculta de usuários(as) comuns quando os tópicos forem visualizados.
-      show_on: top_menu indica as páginas definidas na <a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">configuração do site no menu superior</a>
+      show_on: top_menu indica as páginas definidas na <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">configuração do site no menu superior</a>
       make_collapsible: Fazer o componente poder ser recolhido
       show_title: exibe o texto definido abaixo (o tíbulo sempre é mostrado quando make_collapsible estiver habilitado)
       sort_by_created: Desativar para classificar por atividade mais recente

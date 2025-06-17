@@ -9,7 +9,7 @@ es:
     settings:
       number_of_topics: Mostrar hasta 5 temas con anchura máxima
       hide_featured_tag: Cuando esté activada, la etiqueta «etiqueta destacada» establecida anteriormente será invisible para los usuarios normales cuando vean los temas.
-      show_on: top_menu se refiere a las páginas definidas en los <a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">ajustes del sitio del menú superior</a>
+      show_on: top_menu se refiere a las páginas definidas en los <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">ajustes del sitio del menú superior</a>
       make_collapsible: Hacer que todo el componente sea plegable
       show_title: muestra el texto establecido a continuación (el título siempre se muestra cuando make_collapsible está activado)
       sort_by_created: Desactivar la clasificación por actividad más reciente

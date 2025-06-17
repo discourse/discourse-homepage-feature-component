@@ -9,7 +9,7 @@ ru:
     settings:
       number_of_topics: Показывает до 5 тем при достижении максимальной ширины
       hide_featured_tag: Если этот параметр включен, установленный выше тег "featured tag" будет невидим для обычных пользователей при просмотре тем.
-      show_on: top_menu относится к страницам, заданным в <a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">настройках верхнего меню сайта</a>
+      show_on: top_menu относится к страницам, заданным в <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">настройках верхнего меню сайта</a>
       make_collapsible: Делает весь компонент сворачиваемым
       show_title: отображает текст, заданный ниже (заголовок всегда отображается, если включен параметр make_collapsible)
       sort_by_created: Отключает сортировку по последней активности

@@ -9,7 +9,7 @@ tr_TR:
     settings:
       number_of_topics: Maksimum genişlikte en fazla 5 konu göster
       hide_featured_tag: Etkinleştirildiğinde, yukarıda ayarlanan "öne çıkan etiket" etiketi, konuları görüntülerken normal kullanıcılar tarafından görülemez.
-      show_on: top_menu <a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">üst menü site ayarı</a> bölümünde ayarlanan sayfaları ifade eder
+      show_on: top_menu <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">üst menü site ayarı</a> bölümünde ayarlanan sayfaları ifade eder
       make_collapsible: Tüm bileşeni daraltılabilir hâle getir
       show_title: Aşağıda ayarlanan metni görüntüler (make_collapsible açık olduğunda başlık her zaman gösterilir)
       sort_by_created: Son etkinliğe göre sıralamayı devre dışı bırak

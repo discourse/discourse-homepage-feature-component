@@ -9,7 +9,7 @@ ar:
     settings:
       number_of_topics: عرض ما يصل إلى 5 موضوعات بأقصى عرض
       hide_featured_tag: عند التفعيل، سيصبح الوسم "وسم مميز" المحدَّد أعلاه غير مرئي للمستخدمين العاديين عند عرض الموضوعات.
-      show_on: يشير top_menu إلى الصفحات المحدَّدة في <a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">إعداد القائمة العلوية للموقع</a>
+      show_on: يشير top_menu إلى الصفحات المحدَّدة في <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">إعداد القائمة العلوية للموقع</a>
       make_collapsible: جعل المكوِّن بأكمله قابلًا للطي
       show_title: يعرض مجموعة النصوص أدناه (يتم عرض العنوان دائمًا عند تشغيل make_collapsible)
       sort_by_created: التعطيل للفرز حسب النشاط الأخير

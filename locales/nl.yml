@@ -9,7 +9,7 @@ nl:
     settings:
       number_of_topics: Tot 5 onderwerpen op maximale breedte weergeven
       hide_featured_tag: Als dit is ingeschakeld, is de hierboven ingestelde tag "featured tag" onzichtbaar voor normale gebruikers bij het bekijken van topics.
-      show_on: top_menu verwijst naar pagina's die zijn ingesteld in de <a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">site-instelling topmenu</a>
+      show_on: top_menu verwijst naar pagina's die zijn ingesteld in de <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">site-instelling topmenu</a>
       make_collapsible: Maak de gehele component samenvouwbaar
       show_title: geeft de onderstaande tekstset weer (titel wordt altijd weergegeven als make_collapsible is ingeschakeld)
       sort_by_created: Schakel uit om op nieuwste activiteit te sorteren

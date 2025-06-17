@@ -9,7 +9,7 @@ zh_CN:
     settings:
       number_of_topics: 以 max-width 显示最多 5 个话题
       hide_featured_tag: 启用后，常规用户在查看话题时将看不到上面设置的“精选标签”。
-      show_on: top_menu 是指在<a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">顶部菜单网站设置</a>中设置的页面。
+      show_on: top_menu 是指在<a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">顶部菜单网站设置</a>中设置的页面。
       make_collapsible: 将整个组件设为可折叠
       show_title: 在下方显示设置的文本（当 make_collapsible 处于开启状态时，始终显示标题）
       sort_by_created: 禁用以按最新活动排序

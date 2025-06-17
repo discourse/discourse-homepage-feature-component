@@ -9,7 +9,7 @@ it:
     settings:
       number_of_topics: Visualizza fino a 5 argomenti alla larghezza massima
       hide_featured_tag: Quando l'opzione è abilitata, l'etichetta "etichetta in evidenza" impostata sopra sarà invisibile agli utenti normali durante la visualizzazione degli argomenti.
-      show_on: top_menu si riferisce alle pagine impostate nelle <a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">impostazioni del sito del menu in alto</a>
+      show_on: top_menu si riferisce alle pagine impostate nelle <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">impostazioni del sito del menu in alto</a>
       make_collapsible: Rendi l'intero componente comprimibile
       show_title: mostra il testo impostato di seguito (il titolo viene sempre mostrato quando make_collapsible è attivo)
       sort_by_created: Disabilita per ordinare in base all'ultima attività

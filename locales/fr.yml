@@ -9,7 +9,7 @@ fr:
     settings:
       number_of_topics: Afficher jusqu'à 5 sujets à la largeur maximale
       hide_featured_tag: Lorsque cette option est activée, l'étiquette « étiquette en vedette » définie ci-dessus sera invisible pour les utilisateurs normaux lorsqu'ils consulteront des sujets.
-      show_on: top_menu fait référence aux pages définies dans le paramètre de site <a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">top menu</a>
+      show_on: top_menu fait référence aux pages définies dans le paramètre de site <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">top menu</a>
       make_collapsible: Rendre l'ensemble du composant rabattable
       show_title: affiche le texte défini ci-dessous (le titre est toujours affiché lorsque make_collapsible est activé)
       sort_by_created: Désactiver le tri par dernière activité

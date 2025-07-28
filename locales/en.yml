@@ -4,7 +4,7 @@ en:
     settings:
       number_of_topics: Display up to 5 topics at max-width
       hide_featured_tag: When enabled the tag "featured tag" set above will be invisible to normal users when viewing topics.
-      show_on: top_menu refers to pages set in the <a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">top menu site setting</a>
+      show_on: top_menu refers to pages set in the <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">top menu site setting</a>
       make_collapsible: Make the entire component collapsible
       show_title: displays the text set below (title is always shown when make_collapsible is on)
       sort_by_created: Disable to sort by latest activity

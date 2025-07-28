@@ -9,7 +9,7 @@ fi:
     settings:
       number_of_topics: Näytä enintään 5 ketjua enimmäisleveydellä
       hide_featured_tag: Kun tämä on käytössä, edellä asetettu "featured tag" -tunniste ei näy tavallisille käyttäjille tarkasteltaessa ketjuja.
-      show_on: Top_menu viittaa sivuihin, jotka on asetettu <a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">ylävalikon sivustoasetuksissa</a>
+      show_on: Top_menu viittaa sivuihin, jotka on asetettu <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">ylävalikon sivustoasetuksissa</a>
       make_collapsible: Tee koko komponentista tiivistettävä
       show_title: näyttää alla asetetun tekstin (otsikko näytetään aina, kun make_collapsible on käytössä)
       sort_by_created: Poista käytöstä lajitellaksesi viimeisimmän toiminnan mukaan

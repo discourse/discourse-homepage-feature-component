@@ -1,11 +1,18 @@
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
+import { concat } from "@ember/helper";
 import { action } from "@ember/object";
+import didInsert from "@ember/render-modifiers/modifiers/did-insert";
 import { service } from "@ember/service";
+import { and, not } from "truth-helpers";
+import DButton from "discourse/components/d-button";
+import concatClass from "discourse/helpers/concat-class";
+import icon from "discourse/helpers/d-icon";
+import htmlSafe from "discourse/helpers/html-safe";
+import getURL from "discourse/lib/get-url";
 import { emojiUnescape } from "discourse/lib/text";
 import { defaultHomepage } from "discourse/lib/utilities";
-import getURL from "discourse-common/lib/get-url";
-import I18n from "I18n";
+import { i18n } from "discourse-i18n";
 
 const FEATURED_CLASS = "featured-homepage-topics";
 
@@ -66,7 +73,7 @@ export default class FeaturedHomepageTopics extends Component {
 
   get featuredTitle() {
     // falls back to setting for backwards compatibility
-    return I18n.t(themePrefix("featured_topic_title")) || settings.title_text;
+    return i18n(themePrefix("featured_topic_title")) || settings.title_text;
   }
 
   get showFor() {
@@ -128,4 +135,76 @@ export default class FeaturedHomepageTopics extends Component {
       )
       .slice(0, settings.number_of_topics);
   }
+
+  <template>
+    {{#if (and this.showFor this.showHere)}}
+      <div
+        class="custom-homepage-wrapper"
+        {{didInsert this.getBannerTopics}}
+        {{didInsert this.checkShowHere}}
+      >
+        {{#if this.featuredTagTopics}}
+          <div class="custom-homepage">
+            {{#if settings.make_collapsible}}
+              <DButton
+                class={{concatClass
+                  "featured-topic-toggle"
+                  (if this.toggleTopics "is-open")
+                }}
+                @action={{action "toggle"}}
+                @translatedLabel={{this.featuredTitle}}
+              >
+                {{#if this.toggleTopics}}
+                  {{icon "angle-right"}}
+                {{else}}
+                  {{icon "angle-down"}}
+                {{/if}}
+              </DButton>
+            {{/if}}
+
+            <div
+              class={{concatClass
+                "featured-topic-wrapper"
+                this.mobileStyle
+                (if (and this.toggleTopics settings.make_collapsible) "hidden")
+              }}
+            >
+              {{#if (and settings.show_title (not settings.make_collapsible))}}
+                <h2>
+                  {{this.featuredTitle}}
+                </h2>
+              {{/if}}
+
+              <div class="featured-topics">
+                {{#each this.featuredTagTopics as |t|}}
+                  <div class="featured-topic">
+                    <div
+                      class="featured-topic-image"
+                      style={{htmlSafe
+                        (concat "background-image: url(" t.image_url ")")
+                      }}
+                    >
+                      {{! template-lint-disable no-invalid-link-text }}
+                      <a href={{this.topicHref t}}></a>
+                    </div>
+                    <h3>
+                      <a
+                        href={{this.topicHref t}}
+                        role="heading"
+                        aria-level="2"
+                        data-topic-id={{t.id}}
+                      >
+                        {{htmlSafe (this.emojiTitle t.fancy_title)}}
+                      </a>
+                    </h3>
+                  </div>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+
+    {{/if}}
+  </template>
 }

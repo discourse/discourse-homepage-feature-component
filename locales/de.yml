@@ -9,7 +9,7 @@ de:
     settings:
       number_of_topics: Bis zu 5 Themen auf maximaler Breite anzeigen
       hide_featured_tag: Wenn diese Funktion aktiviert ist, wird das oben eingestellte Schlagwort „featured tag“ für normale Benutzer unsichtbar, wenn sie Themen ansehen.
-      show_on: top_menu bezieht sich auf Seiten, die in der <a href="%{base_url}/admin/site_settings/category/all_results?filter=top_menu">„top menu“-Website-Einstellung</a> festgelegt sind
+      show_on: top_menu bezieht sich auf Seiten, die in der <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">„top menu“-Website-Einstellung</a> festgelegt sind
       make_collapsible: Die gesamte Komponente zusammenklappbar machen
       show_title: zeigt den unten festgelegten Text an (der Titel wird immer angezeigt, wenn make_collapsible aktiviert ist)
       sort_by_created: Deaktivieren, um nach der neuesten Aktivität zu sortieren

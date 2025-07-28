@@ -10,25 +10,29 @@ html.homepage-featured-topics {
   border-bottom: 1px solid var(--primary-low);
   position: relative;
 
+  @media screen and (width <= 450px) {
+    margin-top: 1em;
+  }
+
   .spinner {
     position: absolute;
     left: 0;
     right: 0;
     top: 80px;
-    @media screen and (max-width: 450px) {
-      top: 70px;
-    }
     margin-left: auto;
     margin-right: auto;
+
+    @media screen and (width <= 450px) {
+      top: 70px;
+    }
   }
-  @media screen and (max-width: 450px) {
-    margin-top: 1em;
-  }
+
   h2 {
     border-bottom: 1px solid var(--primary-low);
     padding-bottom: 0.5em;
     margin-bottom: 1.5em;
   }
+
   .featured-topics {
     display: flex;
     justify-content: center;
@@ -42,55 +46,63 @@ html.homepage-featured-topics {
       align-items: center;
       justify-content: center;
 
-      @media screen and (min-width: 451px) {
+      @media screen and (width >= 451px) {
         margin: 0 1.25em;
+
         &:first-of-type:not(:last-of-type) {
           margin-left: 0;
         }
+
         &:last-of-type:not(:first-of-type) {
           margin-right: 0;
         }
       }
 
-      @media screen and (max-width: 999px) {
+      @media screen and (width <= 999px) {
         &:nth-of-type(4) {
           margin-right: 0;
         }
+
         &:nth-of-type(n + 5) {
           display: none;
         }
       }
 
-      @media screen and (max-width: 800px) {
+      @media screen and (width <= 800px) {
         &:nth-of-type(3) {
           margin-right: 0;
         }
+
         &:nth-of-type(n + 4) {
           display: none;
         }
       }
 
-      @media screen and (max-width: 600px) {
+      @media screen and (width <= 600px) {
         width: 100%;
+
         &:nth-of-type(2) {
           margin-right: 0;
         }
+
         &:nth-of-type(n + 3) {
           display: none;
         }
       }
 
-      @media screen and (max-width: 450px) {
+      @media screen and (width <= 450px) {
         width: 100%;
+
         &:nth-of-type(n + 2) {
           display: none;
         }
       }
+
       h3 {
         margin: 0;
-        padding: 1em 0 1.5em;
         font-size: var(--font-up-2);
         padding: 0.5em 1em 1em 1em;
+
         a {
           display: -webkit-box;
           overflow: hidden;
@@ -100,12 +112,14 @@ html.homepage-featured-topics {
           -webkit-box-orient: vertical;
         }
       }
+
       .featured-topic-image {
         height: 200px;
         max-width: 450px;
         width: 100%;
         background-size: cover;
         background-position: center center;
+
         a {
           display: block;
           width: 100%;
@@ -115,28 +129,32 @@ html.homepage-featured-topics {
     }
   }
 
-  //same effect till max-width 600px
+  // same effect till max-width 600px
   &.-mobile-stacked,
   &.-mobile-horizontal {
     .featured-topics {
       justify-content: flex-start;
-      @media screen and (max-width: 999px) {
+
+      @media screen and (width <= 999px) {
         flex-direction: row;
         gap: 1.25em;
-        padding-bottom: 1rem; //spacing for scroll on mobile
+        padding-bottom: 1rem; // spacing for scroll on mobile
         overflow-x: scroll;
+
         .featured-topic {
           flex-shrink: 0;
           margin: 0;
+
           &:nth-of-type(n + 5) {
             display: flex;
           }
         }
       }
 
-      @media screen and (max-width: 800px) {
+      @media screen and (width <= 800px) {
         .featured-topic {
           flex-basis: 45%;
+
           &:nth-of-type(n + 4) {
             display: flex;
           }
@@ -145,18 +163,21 @@ html.homepage-featured-topics {
     }
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (width <= 600px) {
     &.-mobile-stacked {
       .featured-topics {
         flex-direction: column;
         align-items: center;
         gap: 0;
+
         .featured-topic {
           flex-basis: 100%;
           margin: 0;
+
           &:nth-of-type(n + 3) {
             display: flex;
           }
+
           &:nth-of-type(n + 2) {
             display: flex;
           }
@@ -167,6 +188,7 @@ html.homepage-featured-topics {
         }
       }
     }
+
     &.-mobile-horizontal {
       .featured-topics {
         .featured-topic {
@@ -175,6 +197,7 @@ html.homepage-featured-topics {
           &:nth-of-type(n + 3) {
             display: flex;
           }
+
           &:nth-of-type(n + 2) {
             display: flex;
           }
@@ -182,7 +205,8 @@ html.homepage-featured-topics {
       }
     }
   }
-  @media screen and (max-width: 400px) {
+
+  @media screen and (width <= 400px) {
     &.-mobile-horizontal {
       .featured-topics {
         .featured-topic {
@@ -201,11 +225,12 @@ body:not(.staff) {
 }
 
 button.featured-topic-toggle {
+  gap: 0.35em;
+  justify-content: flex-start;
+  margin-bottom: 1.5em;
+
   .d-button-label + .d-icon {
     order: -1;
     margin: 0;
   }
-  gap: 0.35em;
-  justify-content: flex-start;
-  margin-bottom: 1.5em;
 }

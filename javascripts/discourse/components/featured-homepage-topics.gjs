@@ -151,7 +151,7 @@ export default class FeaturedHomepageTopics extends Component {
                   "featured-topic-toggle"
                   (if this.toggleTopics "is-open")
                 }}
-                @action={{action "toggle"}}
+                @action={{this.toggle}}
                 @translatedLabel={{this.featuredTitle}}
               >
                 {{#if this.toggleTopics}}

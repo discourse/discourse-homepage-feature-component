@@ -168,7 +168,7 @@ export default class FeaturedHomepageTopics extends Component {
   }
 
   get showPageArrows() {
-    return settings.max_number_of_topics > settings.number_of_topics;
+    return settings.max_number_of_topics > settings.number_of_topics && this.featuredTopicsAvailable > settings.number_of_topics;
   }
 
   get showLeftArrow() {

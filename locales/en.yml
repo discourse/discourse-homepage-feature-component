@@ -3,6 +3,7 @@ en:
   theme_metadata:
     settings:
       number_of_topics: Display up to 5 topics at max-width
+      max_number_of_topics: Maximum number of featured topics. If set higher than number_of_topics then arrows will be displayed for paging through the topics.
       hide_featured_tag: When enabled the tag "featured tag" set above will be invisible to normal users when viewing topics.
       show_on: top_menu refers to pages set in the <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">top menu site setting</a>
       make_collapsible: Make the entire component collapsible

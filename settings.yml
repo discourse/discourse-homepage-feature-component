@@ -6,6 +6,11 @@ number_of_topics:
   min: 1
   max: 5
 
+max_number_of_topics:
+  default: 0
+  min: 0
+  max: 25
+
 hide_featured_tag:
   default: false
 

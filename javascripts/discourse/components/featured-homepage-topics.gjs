@@ -28,14 +28,20 @@ export default class FeaturedHomepageTopics extends Component {
   toggleTopics =
     this.keyValueStore.getItem("toggleTopicsState") === "true" || false;
 
+  @tracked currentFeaturedTopic = 0;
+  @tracked featuredTopicsAvailable = 0;
+  @tracked actualTopicsDisplayed = 0;
+
   constructor() {
     super(...arguments);
     this.router.on("routeDidChange", this.checkShowHere);
+    window.addEventListener("resize", this.getBannerTopics);
   }
 
   willDestroy() {
     super.willDestroy(...arguments);
     this.router.off("routeDidChange", this.checkShowHere);
+    window.removeEventListener("resize", this.getBannerTopics);
   }
 
   @action
@@ -119,6 +125,20 @@ export default class FeaturedHomepageTopics extends Component {
       return;
     }
 
+    this.actualTopicsDisplayed = settings.number_of_topics;
+    if (!settings.show_all_always) {
+      // Sizes here are based on the existing resize boundaries in the CSS
+      if (window.innerWidth <= 450) {
+        this.actualTopicsDisplayed = Math.min(this.actualTopicsDisplayed, 1);
+      } else if (window.innerWidth <= 600) {
+        this.actualTopicsDisplayed = Math.min(this.actualTopicsDisplayed, 2);
+      } else if (window.innerWidth <= 800) {
+        this.actualTopicsDisplayed = Math.min(this.actualTopicsDisplayed, 3);
+      } else if (window.innerWidth <= 999) {
+        this.actualTopicsDisplayed = Math.min(this.actualTopicsDisplayed, 4);
+      }
+    }
+
     const sortOrder = settings.sort_by_created ? "created" : "activity";
     const topicList = await this.store.findFiltered("topicList", {
       filter: "latest",
@@ -128,12 +148,58 @@ export default class FeaturedHomepageTopics extends Component {
       },
     });
 
-    this.featuredTagTopics = topicList.topics
+    const filteredTopics = topicList.topics
       .filter(
         (topic) =>
           topic.image_url && (!settings.hide_closed_topics || !topic.closed)
       )
-      .slice(0, settings.number_of_topics);
+      .slice(
+        0,
+        Math.max(settings.number_of_topics, settings.max_number_of_topics)
+      );
+
+    this.featuredTopicsAvailable = filteredTopics.length;
+
+    this.featuredTagTopics = filteredTopics.slice(
+      this.currentFeaturedTopic,
+      this.currentFeaturedTopic + this.actualTopicsDisplayed
+    );
+  }
+
+  get showPageArrows() {
+    return (
+      settings.max_number_of_topics > settings.number_of_topics &&
+      this.featuredTopicsAvailable > settings.number_of_topics
+    );
+  }
+
+  get showLeftArrow() {
+    return this.currentFeaturedTopic > 0;
+  }
+
+  get showRightArrow() {
+    return (
+      this.currentFeaturedTopic <
+      this.featuredTopicsAvailable - this.actualTopicsDisplayed - 1
+    );
+  }
+
+  @action
+  pageLeft() {
+    this.currentFeaturedTopic = Math.max(
+      this.currentFeaturedTopic - this.actualTopicsDisplayed,
+      0
+    );
+    this.getBannerTopics();
+  }
+
+  @action
+  pageRight() {
+    this.currentFeaturedTopic = Math.min(
+      this.currentFeaturedTopic + this.actualTopicsDisplayed,
+      this.featuredTopicsAvailable - 1
+    );
+    this.getBannerTopics();
   }
 
   <template>
@@ -175,30 +241,54 @@ export default class FeaturedHomepageTopics extends Component {
                 </h2>
               {{/if}}
 
-              <div class="featured-topics">
-                {{#each this.featuredTagTopics as |t|}}
-                  <div class="featured-topic">
-                    <div
-                      class="featured-topic-image"
-                      style={{htmlSafe
-                        (concat "background-image: url(" t.image_url ")")
-                      }}
-                    >
-                      {{! template-lint-disable no-invalid-link-text }}
-                      <a href={{this.topicHref t}}></a>
-                    </div>
-                    <h3>
-                      <a
-                        href={{this.topicHref t}}
-                        role="heading"
-                        aria-level="2"
-                        data-topic-id={{t.id}}
-                      >
-                        {{htmlSafe (this.emojiTitle t.fancy_title)}}
-                      </a>
-                    </h3>
+              <div class="featured-topics-controls">
+                {{#if this.showPageArrows}}
+                  <div class="page-button-container">
+                    {{#if this.showLeftArrow}}
+                      <DButton
+                        class="page-button left-page-button"
+                        @action={{this.pageLeft}}
+                        @icon="angle-left"
+                      />
+                    {{/if}}
                   </div>
-                {{/each}}
+                {{/if}}
+                <div class="featured-topics">
+                  {{#each this.featuredTagTopics as |t|}}
+                    <div class="featured-topic">
+                      <div
+                        class="featured-topic-image"
+                        style={{htmlSafe
+                          (concat "background-image: url(" t.image_url ")")
+                        }}
+                      >
+                        {{! template-lint-disable no-invalid-link-text }}
+                        <a href={{this.topicHref t}}></a>
+                      </div>
+                      <h3>
+                        <a
+                          href={{this.topicHref t}}
+                          role="heading"
+                          aria-level="2"
+                          data-topic-id={{t.id}}
+                        >
+                          {{htmlSafe (this.emojiTitle t.fancy_title)}}
+                        </a>
+                      </h3>
+                    </div>
+                  {{/each}}
+                </div>
+                {{#if this.showPageArrows}}
+                  <div class="page-button-container">
+                    {{#if this.showRightArrow}}
+                      <DButton
+                        class="page-button right-page-button"
+                        @action={{this.pageRight}}
+                        @icon="angle-right"
+                      />
+                    {{/if}}
+                  </div>
+                {{/if}}
               </div>
             </div>
           </div>

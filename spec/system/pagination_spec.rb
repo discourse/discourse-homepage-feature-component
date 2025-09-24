@@ -87,5 +87,25 @@ RSpec.describe "Pagination", type: :system do
       expect(page).to have_css(".featured-topics-controls .right-page-button")
       expect(page).to have_css(".featured-topics-controls .left-page-button")
     end
+
+    it "should allow pagination even if last page only has 1 topic" do
+      theme.update_setting(:number_of_topics, 3)
+      theme.update_setting(:max_number_of_topics, 4)
+      theme.save!
+
+      # First page should have a right arrow when there's only 1 topic on the next page
+      visit("/")
+      expect(page).to have_css(".featured-topics .featured-topic", count: 3)
+      expect(page).to have_css(".featured-topics-controls .page-button-container")
+      expect(page).to have_css(".featured-topics-controls .right-page-button")
+      expect(page).not_to have_css(".featured-topics-controls .left-page-button")
+
+      # Last page should only have left arrow
+      find(".featured-topics-controls .right-page-button").click
+      expect(page).to have_css(".featured-topics .featured-topic", count: 1)
+      expect(page).to have_css(".featured-topics-controls .page-button-container")
+      expect(page).not_to have_css(".featured-topics-controls .right-page-button")
+      expect(page).to have_css(".featured-topics-controls .left-page-button")
+    end
   end
 end

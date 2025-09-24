@@ -180,7 +180,7 @@ export default class FeaturedHomepageTopics extends Component {
   get showRightArrow() {
     return (
       this.currentFeaturedTopic <
-      this.featuredTopicsAvailable - this.actualTopicsDisplayed - 1
+      this.featuredTopicsAvailable - this.actualTopicsDisplayed
     );
   }
 

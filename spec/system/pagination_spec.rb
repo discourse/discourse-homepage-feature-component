@@ -73,7 +73,7 @@ RSpec.describe "Pagination", type: :system do
       expect(page).to have_css(".featured-topics-controls .right-page-button")
       expect(page).to have_css(".featured-topics-controls .left-page-button")
 
-      #Third page should have no right arrow, and only 2 featured topics
+      # Third page should have no right arrow, and only 2 featured topics
       find(".featured-topics-controls .right-page-button").click
       expect(page).to have_css(".featured-topics .featured-topic", count: 2)
       expect(page).to have_css(".featured-topics-controls .page-button-container")

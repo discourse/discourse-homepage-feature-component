@@ -8,6 +8,7 @@ de:
   theme_metadata:
     settings:
       number_of_topics: Bis zu 5 Themen auf maximaler Breite anzeigen
+      max_number_of_topics: Maximale Anzahl der vorgestellten Themen. Wenn der Wert höher als number_of_topics eingestellt ist, werden Pfeile zum Blättern durch die Themen angezeigt.
       hide_featured_tag: Wenn diese Funktion aktiviert ist, wird das oben eingestellte Schlagwort „featured tag“ für normale Benutzer unsichtbar, wenn sie Themen ansehen.
       show_on: top_menu bezieht sich auf Seiten, die in der <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">„top menu“-Website-Einstellung</a> (Obere Menüseiten) festgelegt sind
       make_collapsible: Die gesamte Komponente zusammenklappbar machen

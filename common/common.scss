@@ -39,12 +39,13 @@ html.homepage-featured-topics {
     justify-content: space-between;
 
     .page-button-container {
-      flex: 0 0 2.2em;
+      flex: 0 0 3em;
     }
 
     .page-button {
       height: min-content;
-      padding: 0.3em;
+      padding: 0.5em;
+      margin-bottom: 3em;
     }
 
     .left-page-button {

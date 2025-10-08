@@ -3,7 +3,7 @@
 RSpec.describe "Pagination", type: :system do
   let!(:theme) { upload_theme_component }
   fab!(:tag) { Fabricate(:tag, name: "featured") }
-  fab!(:upload) { Fabricate(:image_upload) }
+  fab!(:upload, :image_upload)
 
   describe "without enough topics to page" do
     fab!(:topics) { Fabricate.times(3, :topic_with_op, image_upload: upload, tags: [tag]) }
@@ -19,7 +19,7 @@ RSpec.describe "Pagination", type: :system do
       expect(page).not_to have_css(".featured-topics-controls .right-page-button")
     end
   end
-  
+
   describe "with plenty of topics to page" do
     fab!(:topics) { Fabricate.times(8, :topic_with_op, image_upload: upload, tags: [tag]) }
 

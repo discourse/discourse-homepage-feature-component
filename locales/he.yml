@@ -8,4 +8,5 @@ he:
   theme_metadata:
     settings:
       number_of_topics: הצגת עד 5 נושאים ברוחב המרבי (max-width)
+      max_number_of_topics: מספר מרבי של נושאים מובילים. אם גבוה מ־number_of_topics (מספר נושאים), יוצגו חצים לדפדוף בין הנושאים.
       show_on: top_menu מתייחס לעמודים שמוגדרים ב<a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">הגדרת האתר לתפריט העליון</a>

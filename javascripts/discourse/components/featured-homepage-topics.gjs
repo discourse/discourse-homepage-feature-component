@@ -160,8 +160,10 @@ export default class FeaturedHomepageTopics extends Component {
 
     this.featuredTopicsAvailable = filteredTopics.length;
 
-    const firstFeaturedTopicIndex = this.currentPageIndex * this.actualTopicsDisplayed;
-    const lastFeaturedTopicIndex = firstFeaturedTopicIndex + this.actualTopicsDisplayed;
+    const firstFeaturedTopicIndex =
+      this.currentPageIndex * this.actualTopicsDisplayed;
+    const lastFeaturedTopicIndex =
+      firstFeaturedTopicIndex + this.actualTopicsDisplayed;
 
     this.featuredTagTopics = filteredTopics.slice(
       firstFeaturedTopicIndex,
@@ -184,15 +186,13 @@ export default class FeaturedHomepageTopics extends Component {
     return this.currentPageIndex + 1;
   }
 
-
   get showLeftArrow() {
     return settings.pages_loop || this.currentPageIndex > 0;
   }
 
   get showRightArrow() {
     return (
-      settings.pages_loop ||
-      this.currentPageIndex < this.numberOfPages - 1
+      settings.pages_loop || this.currentPageIndex < this.numberOfPages - 1
     );
   }
 
@@ -328,7 +328,7 @@ export default class FeaturedHomepageTopics extends Component {
               {{#if this.paginationEnabled}}
                 <div class="page-progress-container">
                   {{#each this.pageProgressArray as |pageProgressClass|}}
-                      <div class="page-progress-marker {{pageProgressClass}}"/>
+                    <div class="page-progress-marker {{pageProgressClass}}" />
                   {{/each}}
                 </div>
               {{/if}}

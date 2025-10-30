@@ -28,7 +28,7 @@ export default class FeaturedHomepageTopics extends Component {
   toggleTopics =
     this.keyValueStore.getItem("toggleTopicsState") === "true" || false;
 
-  @tracked currentFeaturedTopic = 0;
+  @tracked currentPageIndex = 0;
   @tracked featuredTopicsAvailable = 0;
   @tracked actualTopicsDisplayed = 0;
 
@@ -160,46 +160,80 @@ export default class FeaturedHomepageTopics extends Component {
 
     this.featuredTopicsAvailable = filteredTopics.length;
 
+    const firstFeaturedTopicIndex = this.currentPageIndex * this.actualTopicsDisplayed;
+    const lastFeaturedTopicIndex = firstFeaturedTopicIndex + this.actualTopicsDisplayed;
+
     this.featuredTagTopics = filteredTopics.slice(
-      this.currentFeaturedTopic,
-      this.currentFeaturedTopic + this.actualTopicsDisplayed
+      firstFeaturedTopicIndex,
+      lastFeaturedTopicIndex
     );
   }
 
-  get showPageArrows() {
+  get paginationEnabled() {
     return (
       settings.max_number_of_topics > settings.number_of_topics &&
       this.featuredTopicsAvailable > settings.number_of_topics
     );
   }
 
+  get numberOfPages() {
+    return Math.ceil(this.featuredTopicsAvailable / this.actualTopicsDisplayed);
+  }
+
+  get currentPageNumber() {
+    return this.currentPageIndex + 1;
+  }
+
+
   get showLeftArrow() {
-    return this.currentFeaturedTopic > 0;
+    return settings.pages_loop || this.currentPageIndex > 0;
   }
 
   get showRightArrow() {
     return (
-      this.currentFeaturedTopic <
-      this.featuredTopicsAvailable - this.actualTopicsDisplayed
+      settings.pages_loop ||
+      this.currentPageIndex < this.numberOfPages - 1
     );
   }
 
   @action
   pageLeft() {
-    this.currentFeaturedTopic = Math.max(
-      this.currentFeaturedTopic - this.actualTopicsDisplayed,
-      0
-    );
+    if (this.currentPageIndex === 0) {
+      if (settings.pages_loop) {
+        this.currentPageIndex = this.numberOfPages - 1;
+      }
+    } else {
+      this.currentPageIndex -= 1;
+    }
+
     this.getBannerTopics();
   }
 
   @action
   pageRight() {
-    this.currentFeaturedTopic = Math.min(
-      this.currentFeaturedTopic + this.actualTopicsDisplayed,
-      this.featuredTopicsAvailable - 1
-    );
+    if (this.currentPageIndex === this.numberOfPages - 1) {
+      if (settings.pages_loop) {
+        this.currentPageIndex = 0;
+      }
+    } else {
+      this.currentPageIndex += 1;
+    }
+
     this.getBannerTopics();
+  }
+
+  get pageProgressArray() {
+    let pageProgressArray = [];
+    for (let i = 0; i < this.numberOfPages; ++i) {
+      if (i === this.currentPageIndex) {
+        pageProgressArray.push("--current-page");
+      } else if (i < this.currentPageIndex) {
+        pageProgressArray.push("--previous-page");
+      } else {
+        pageProgressArray.push("");
+      }
+    }
+    return pageProgressArray;
   }
 
   <template>
@@ -242,7 +276,7 @@ export default class FeaturedHomepageTopics extends Component {
               {{/if}}
 
               <div class="featured-topics-controls">
-                {{#if this.showPageArrows}}
+                {{#if this.paginationEnabled}}
                   <div class="page-button-container">
                     {{#if this.showLeftArrow}}
                       <DButton
@@ -278,7 +312,7 @@ export default class FeaturedHomepageTopics extends Component {
                     </div>
                   {{/each}}
                 </div>
-                {{#if this.showPageArrows}}
+                {{#if this.paginationEnabled}}
                   <div class="page-button-container">
                     {{#if this.showRightArrow}}
                       <DButton
@@ -290,6 +324,14 @@ export default class FeaturedHomepageTopics extends Component {
                   </div>
                 {{/if}}
               </div>
+
+              {{#if this.paginationEnabled}}
+                <div class="page-progress-container">
+                  {{#each this.pageProgressArray as |pageProgressClass|}}
+                      <div class="page-progress-marker {{pageProgressClass}}"/>
+                  {{/each}}
+                </div>
+              {{/if}}
             </div>
           </div>
         {{/if}}

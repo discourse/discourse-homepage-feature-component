@@ -240,6 +240,34 @@ html.homepage-featured-topics {
       }
     }
   }
+
+  .page-progress-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--progress-bar-circle-size);
+    margin-bottom: 1.2rem;
+
+    .page-progress-marker {
+      width: var(--progress-bar-circle-size);
+      height: var(--progress-bar-circle-size);
+      border: var(--progress-bar-line-width) solid var(--primary-low-mid);
+      background-color: var(--secondary);
+      border-radius: 50%;
+
+      &.--previous-page {
+        background-color: var(--primary-medium);
+        border-color: var(--primary-medium);
+      }
+
+      &.--current-page {
+        background-color: var(--primary-medium);
+        border-color: var(--primary-medium);
+        box-shadow: 0 0 1px calc(var(--progress-bar-circle-size) / 2)
+          var(--primary-low);
+      }
+    }
+  }
 }
 
 body:not(.staff) {

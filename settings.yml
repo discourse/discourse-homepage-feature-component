@@ -11,6 +11,9 @@ max_number_of_topics:
   min: 0
   max: 25
 
+pages_loop:
+  default: false
+
 hide_featured_tag:
   default: false
 

@@ -1,6 +1,7 @@
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
-import { concat } from "@ember/helper";
+import { concat, fn } from "@ember/helper";
+import { on } from "@ember/modifier";
 import { action } from "@ember/object";
 import didInsert from "@ember/render-modifiers/modifiers/did-insert";
 import { service } from "@ember/service";
@@ -226,14 +227,28 @@ export default class FeaturedHomepageTopics extends Component {
     let pageProgressArray = [];
     for (let i = 0; i < this.numberOfPages; ++i) {
       if (i === this.currentPageIndex) {
-        pageProgressArray.push("--current-page");
+        pageProgressArray.push({ pageIndex: i, markerClass: "--current-page" });
       } else if (i < this.currentPageIndex) {
-        pageProgressArray.push("--previous-page");
+        pageProgressArray.push({
+          pageIndex: i,
+          markerClass: "--previous-page",
+        });
       } else {
-        pageProgressArray.push("");
+        pageProgressArray.push({ pageIndex: i, markerClass: "" });
       }
     }
     return pageProgressArray;
+  }
+
+  @action
+  setPageIndex(pageIndex, event) {
+    this.currentPageIndex = pageIndex;
+    event?.preventDefault();
+    this.getBannerTopics();
+  }
+
+  pageNumberTitle(pageIndex) {
+    return i18n(themePrefix("page_number"), { pageNumber: pageIndex + 1 });
   }
 
   <template>
@@ -327,8 +342,21 @@ export default class FeaturedHomepageTopics extends Component {
 
               {{#if this.paginationEnabled}}
                 <div class="page-progress-container">
-                  {{#each this.pageProgressArray as |pageProgressClass|}}
-                    <div class="page-progress-marker {{pageProgressClass}}" />
+                  {{#each this.pageProgressArray as |pageProgressItem|}}
+                    <a
+                      href
+                      class="page-progress-marker-link"
+                      title={{this.pageNumberTitle pageProgressItem.pageIndex}}
+                      {{on
+                        "click"
+                        (fn this.setPageIndex pageProgressItem.pageIndex)
+                      }}
+                    >
+                      <div
+                        class="page-progress-marker
+                          {{pageProgressItem.markerClass}}"
+                      />
+                    </a>
                   {{/each}}
                 </div>
               {{/if}}

@@ -8,3 +8,4 @@ ro:
   theme_metadata:
     settings:
       max_number_of_topics: Numărul maxim de subiecte recomandate. Dacă este setat mai mare decât number_of_topics, atunci vor fi afișate săgeți pentru parcurgerea paginilor dintre subiecte.
+      pages_loop: Dacă paginarea este activată (max_number_of_topics > number_of_topics), paginile continuă către prima pagină după ultima.

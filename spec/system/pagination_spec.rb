@@ -118,6 +118,33 @@ RSpec.describe "Pagination", type: :system do
         expect(page).to have_css(".featured-topics-controls .left-page-button")
         expect_page_progress(2, 2)
       end
+
+      it "allows page switching by clicking page indicators" do
+        theme.update_setting(:number_of_topics, 3)
+        theme.update_setting(:max_number_of_topics, 8)
+        theme.save!
+
+        visit("/")
+        expect(page).to have_css(".featured-topics .featured-topic", count: 3)
+        expect_page_progress(1, 3)
+
+        expect(page).to have_css(".page-progress-container .page-progress-marker-link:nth-child(1)")
+        find(".page-progress-container .page-progress-marker-link:nth-child(1)").click
+        expect(page).to have_css(".featured-topics .featured-topic", count: 3)
+        expect_page_progress(1, 3)
+
+        find(".page-progress-container .page-progress-marker-link:nth-child(2)").click
+        expect(page).to have_css(".featured-topics .featured-topic", count: 3)
+        expect_page_progress(2, 3)
+
+        find(".page-progress-container .page-progress-marker-link:nth-child(3)").click
+        expect(page).to have_css(".featured-topics .featured-topic", count: 2)
+        expect_page_progress(3, 3)
+
+        find(".page-progress-container .page-progress-marker-link:nth-child(1)").click
+        expect(page).to have_css(".featured-topics .featured-topic", count: 3)
+        expect_page_progress(1, 3)
+      end
     end
 
     describe "with looping enabled" do

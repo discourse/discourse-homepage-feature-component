@@ -5,6 +5,7 @@
 # https://translate.discourse.org/
 
 nl:
+  page_number: "Pagina %{pageNumber}"
   theme_metadata:
     settings:
       number_of_topics: Tot 5 onderwerpen op maximale breedte weergeven

@@ -5,3 +5,4 @@
 # https://translate.discourse.org/
 
 sr:
+  page_number: "Strana %{pageNumber}"

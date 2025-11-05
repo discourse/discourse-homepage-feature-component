@@ -5,3 +5,4 @@
 # https://translate.discourse.org/
 
 el:
+  page_number: "Σελίδα %{pageNumber}"

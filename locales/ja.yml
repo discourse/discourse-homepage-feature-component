@@ -5,6 +5,7 @@
 # https://translate.discourse.org/
 
 ja:
+  page_number: "%{pageNumber} ページ"
   theme_metadata:
     settings:
       number_of_topics: 最大幅で最大 5 つのトピックを表示する

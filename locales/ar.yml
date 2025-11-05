@@ -5,6 +5,7 @@
 # https://translate.discourse.org/
 
 ar:
+  page_number: "الصفحة %{pageNumber}"
   theme_metadata:
     settings:
       number_of_topics: عرض ما يصل إلى 5 موضوعات بأقصى عرض

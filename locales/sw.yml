@@ -5,3 +5,4 @@
 # https://translate.discourse.org/
 
 sw:
+  page_number: "Karatasi ya %{pageNumber}"

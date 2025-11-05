@@ -5,3 +5,4 @@
 # https://translate.discourse.org/
 
 gl:
+  page_number: "Páxina %{pageNumber}"

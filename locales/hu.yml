@@ -5,3 +5,4 @@
 # https://translate.discourse.org/
 
 hu:
+  page_number: "%{pageNumber}. oldal"

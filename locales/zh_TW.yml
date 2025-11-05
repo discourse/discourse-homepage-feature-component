@@ -5,3 +5,4 @@
 # https://translate.discourse.org/
 
 zh_TW:
+  page_number: "%{pageNumber} 頁"

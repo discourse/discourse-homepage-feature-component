@@ -5,3 +5,4 @@
 # https://translate.discourse.org/
 
 nb_NO:
+  page_number: "Side %{pageNumber}"

@@ -5,6 +5,7 @@
 # https://translate.discourse.org/
 
 pt_BR:
+  page_number: "Página %{pageNumber}"
   theme_metadata:
     settings:
       number_of_topics: Exibir até 5 tópicos com tamanho máximo

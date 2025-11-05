@@ -5,3 +5,4 @@
 # https://translate.discourse.org/
 
 hy:
+  page_number: "Էջ %{pageNumber}"

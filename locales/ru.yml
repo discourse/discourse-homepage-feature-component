@@ -5,6 +5,7 @@
 # https://translate.discourse.org/
 
 ru:
+  page_number: "Страница %{pageNumber}"
   theme_metadata:
     settings:
       number_of_topics: Показывает до 5 тем при достижении максимальной ширины

@@ -5,3 +5,4 @@
 # https://translate.discourse.org/
 
 id:
+  page_number: "Halaman %{pageNumber}"

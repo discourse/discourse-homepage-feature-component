@@ -5,3 +5,4 @@
 # https://translate.discourse.org/
 
 be:
+  page_number: "Старонка %{pageNumber}"

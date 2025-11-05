@@ -5,3 +5,4 @@
 # https://translate.discourse.org/
 
 ko:
+  page_number: "%{pageNumber}페이지 "

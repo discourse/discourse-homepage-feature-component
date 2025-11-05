@@ -5,3 +5,4 @@
 # https://translate.discourse.org/
 
 da:
+  page_number: "Side %{pageNumber}"

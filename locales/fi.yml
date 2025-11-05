@@ -5,6 +5,7 @@
 # https://translate.discourse.org/
 
 fi:
+  page_number: "Sivu %{pageNumber}"
   theme_metadata:
     settings:
       number_of_topics: Näytä enintään 5 ketjua enimmäisleveydellä

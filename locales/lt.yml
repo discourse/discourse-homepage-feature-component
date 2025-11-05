@@ -5,3 +5,4 @@
 # https://translate.discourse.org/
 
 lt:
+  page_number: "%{pageNumber} Puslapis "

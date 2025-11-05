@@ -5,6 +5,7 @@
 # https://translate.discourse.org/
 
 ro:
+  page_number: "Pagina %{pageNumber}"
   theme_metadata:
     settings:
       max_number_of_topics: Numărul maxim de subiecte recomandate. Dacă este setat mai mare decât number_of_topics, atunci vor fi afișate săgeți pentru parcurgerea paginilor dintre subiecte.

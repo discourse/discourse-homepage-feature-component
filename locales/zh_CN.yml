@@ -5,6 +5,7 @@
 # https://translate.discourse.org/
 
 zh_CN:
+  page_number: "第 %{pageNumber} 页"
   theme_metadata:
     settings:
       number_of_topics: 以 max-width 显示最多 5 个话题

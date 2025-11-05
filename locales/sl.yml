@@ -5,3 +5,4 @@
 # https://translate.discourse.org/
 
 sl:
+  page_number: "Stran %{pageNumber}"

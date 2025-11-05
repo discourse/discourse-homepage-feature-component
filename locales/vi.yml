@@ -5,3 +5,4 @@
 # https://translate.discourse.org/
 
 vi:
+  page_number: "Trang %{pageNumber}"

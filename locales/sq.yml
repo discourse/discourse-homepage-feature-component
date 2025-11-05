@@ -5,3 +5,4 @@
 # https://translate.discourse.org/
 
 sq:
+  page_number: "Faqe %{pageNumber}"

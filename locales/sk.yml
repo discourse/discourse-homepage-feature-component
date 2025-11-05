@@ -5,3 +5,4 @@
 # https://translate.discourse.org/
 
 sk:
+  page_number: "Stránka %{pageNumber}"

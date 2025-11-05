@@ -5,6 +5,7 @@
 # https://translate.discourse.org/
 
 tr_TR:
+  page_number: "%{pageNumber}. Sayfa"
   theme_metadata:
     settings:
       number_of_topics: Maksimum genişlikte en fazla 5 konu göster

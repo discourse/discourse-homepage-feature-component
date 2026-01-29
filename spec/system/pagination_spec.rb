@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "Pagination", type: :system do
+RSpec.describe "Pagination" do
   let!(:theme) { upload_theme_component }
   fab!(:tag) { Fabricate(:tag, name: "featured") }
   fab!(:upload, :image_upload)
@@ -69,7 +69,7 @@ RSpec.describe "Pagination", type: :system do
         expect(page).to have_css(".featured-topics .featured-topic", count: 3)
         expect(page).to have_css(".featured-topics-controls .page-button-container")
         expect(page).to have_css(".featured-topics-controls .right-page-button")
-        expect(page).not_to have_css(".featured-topics-controls .left-page-button")       
+        expect(page).not_to have_css(".featured-topics-controls .left-page-button")
         expect_page_progress(1, 3)
 
         # Second page should have both arrows
@@ -93,7 +93,7 @@ RSpec.describe "Pagination", type: :system do
         expect(page).to have_css(".featured-topics .featured-topic", count: 3)
         expect(page).to have_css(".featured-topics-controls .page-button-container")
         expect(page).to have_css(".featured-topics-controls .right-page-button")
-        expect(page).to have_css(".featured-topics-controls .left-page-button")     
+        expect(page).to have_css(".featured-topics-controls .left-page-button")
         expect_page_progress(2, 3)
       end
 
@@ -148,7 +148,7 @@ RSpec.describe "Pagination", type: :system do
     end
 
     describe "with looping enabled" do
-      before {theme.update_setting(:pages_loop, true)}
+      before { theme.update_setting(:pages_loop, true) }
       it "should not allow pagination if max_number_of_topics <= number_of_topics" do
         theme.update_setting(:number_of_topics, 3)
         theme.update_setting(:max_number_of_topics, 3)
@@ -196,7 +196,7 @@ RSpec.describe "Pagination", type: :system do
         expect(page).to have_css(".featured-topics-controls .left-page-button")
         expect_page_progress(1, 3)
 
-        # Second page 
+        # Second page
         find(".featured-topics-controls .right-page-button").click
         expect(page).to have_css(".featured-topics .featured-topic", count: 3)
         expect(page).to have_css(".featured-topics-controls .page-button-container")
@@ -209,7 +209,7 @@ RSpec.describe "Pagination", type: :system do
         expect(page).to have_css(".featured-topics .featured-topic", count: 2)
         expect(page).to have_css(".featured-topics-controls .page-button-container")
         expect(page).to have_css(".featured-topics-controls .right-page-button")
-        expect(page).to have_css(".featured-topics-controls .left-page-button")        
+        expect(page).to have_css(".featured-topics-controls .left-page-button")
         expect_page_progress(3, 3)
 
         # With looping on, page right from page 3 should return to page 1
@@ -232,13 +232,22 @@ RSpec.describe "Pagination", type: :system do
   end
 
   def expect_page_progress(current_page_number, number_of_pages)
-    expect(page).to have_css(".page-progress-container .page-progress-marker", count: number_of_pages)
-    expect(page).to have_css(".page-progress-container .page-progress-marker.--current-page", count: 1)
+    expect(page).to have_css(
+      ".page-progress-container .page-progress-marker",
+      count: number_of_pages,
+    )
+    expect(page).to have_css(
+      ".page-progress-container .page-progress-marker.--current-page",
+      count: 1,
+    )
 
     if current_page_number == 1
       expect(page).not_to have_css(".page-progress-container .page-progress-marker.--previous-page")
     else
-      expect(page).to have_css(".page-progress-container .page-progress-marker.--previous-page", count: current_page_number - 1)
+      expect(page).to have_css(
+        ".page-progress-container .page-progress-marker.--previous-page",
+        count: current_page_number - 1,
+      )
     end
   end
 end

@@ -131,7 +131,7 @@ html.homepage-featured-topics {
             display: -webkit-box;
             overflow: hidden;
             text-overflow: ellipsis;
-            word-wrap: break-word;
+            overflow-wrap: break-word;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
           }

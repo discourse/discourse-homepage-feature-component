@@ -9,6 +9,8 @@ ar:
   theme_metadata:
     settings:
       number_of_topics: عرض ما يصل إلى 5 موضوعات بأقصى عرض
+      max_number_of_topics: الحد الأقصى لعدد المواضيع المميزة. إذا تم تعيينه أعلى من Number_of_topics، فسيتم عرض أسهم للتنقل بين صفحات المواضيع.
+      pages_loop: إذا تم تمكين ترقيم الصفحات (max_number_of_topics > number_of_topics)، فإن الصفحات تستمر بالعودة إلى الصفحة الأولى بعد آخر صفحة.
       hide_featured_tag: عند التفعيل، سيصبح الوسم "وسم مميز" المحدَّد أعلاه غير مرئي للمستخدمين العاديين عند عرض الموضوعات.
       show_on: يشير top_menu إلى الصفحات المحدَّدة في <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">إعداد القائمة العلوية للموقع</a>
       make_collapsible: جعل المكوِّن بأكمله قابلًا للطي

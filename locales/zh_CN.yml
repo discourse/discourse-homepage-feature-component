@@ -9,6 +9,8 @@ zh_CN:
   theme_metadata:
     settings:
       number_of_topics: 以 max-width 显示最多 5 个话题
+      max_number_of_topics: 精选话题的最大数量。如果设置的值大于 number_of_topics，则会显示箭头以进行话题分页。
+      pages_loop: 如果已启用分页 (max_number_of_topics > number_of_topics)，则页面在最后一页之后会继续回到第一页。
       hide_featured_tag: 启用后，常规用户在查看话题时将看不到上面设置的“精选标签”。
       show_on: top_menu 是指在<a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">顶部菜单站点设置</a>中设置的页面。
       make_collapsible: 将整个组件设为可折叠

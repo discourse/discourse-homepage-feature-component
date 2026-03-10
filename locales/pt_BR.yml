@@ -9,6 +9,8 @@ pt_BR:
   theme_metadata:
     settings:
       number_of_topics: Exibir até 5 tópicos com tamanho máximo
+      max_number_of_topics: Número máximo de tópicos em destaque. Se definido como maior que number_of_topics, setas serão exibidas para navegar entre os tópicos.
+      pages_loop: Se a paginação estiver ativada (max_number_of_topics > number_of_topics), as páginas retornam à primeira página após a última.
       hide_featured_tag: Quando ativada, a "etiqueta em destaque" definida acima será oculta de usuários(as) comuns quando os tópicos forem visualizados.
       show_on: top_menu indica as páginas definidas na <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">configuração do site no menu superior</a>
       make_collapsible: Fazer o componente poder ser recolhido

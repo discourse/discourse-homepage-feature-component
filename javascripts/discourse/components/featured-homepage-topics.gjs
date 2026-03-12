@@ -6,13 +6,13 @@ import { action } from "@ember/object";
 import didInsert from "@ember/render-modifiers/modifiers/did-insert";
 import { service } from "@ember/service";
 import { htmlSafe } from "@ember/template";
-import { and, not } from "truth-helpers";
 import DButton from "discourse/components/d-button";
 import concatClass from "discourse/helpers/concat-class";
 import icon from "discourse/helpers/d-icon";
 import getURL from "discourse/lib/get-url";
 import { emojiUnescape } from "discourse/lib/text";
 import { defaultHomepage } from "discourse/lib/utilities";
+import { and, not } from "discourse/truth-helpers";
 import { i18n } from "discourse-i18n";
 
 const FEATURED_CLASS = "featured-homepage-topics";

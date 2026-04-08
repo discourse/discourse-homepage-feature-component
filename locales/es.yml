@@ -9,6 +9,8 @@ es:
   theme_metadata:
     settings:
       number_of_topics: Mostrar hasta 5 temas con anchura máxima
+      max_number_of_topics: Número máximo de temas destacados. Si se establece un valor superior a number_of_topics, se mostrarán flechas para navegar por los temas.
+      pages_loop: Si la paginación está habilitada (max_number_of_topics > number_of_topics), las páginas vuelven a la primera página después de la última.
       hide_featured_tag: Cuando esté activada, la etiqueta «etiqueta destacada» establecida anteriormente será invisible para los usuarios normales cuando vean los temas.
       show_on: top_menu se refiere a las páginas definidas en los <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">ajustes del sitio del menú superior</a>
       make_collapsible: Hacer que todo el componente sea plegable

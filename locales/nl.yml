@@ -9,6 +9,8 @@ nl:
   theme_metadata:
     settings:
       number_of_topics: Tot 5 onderwerpen op maximale breedte weergeven
+      max_number_of_topics: Maximum aantal uitgelichte topics. Als het hoger is ingesteld dan number_of_topics, worden er pijlen weergegeven om door de topics te bladeren.
+      pages_loop: Als paginering is ingeschakeld (max_number_of_topics > number_of_topics), gaan pagina's terug naar de eerste pagina na de laatste.
       hide_featured_tag: Als dit is ingeschakeld, is de hierboven ingestelde tag "featured tag" onzichtbaar voor normale gebruikers bij het bekijken van topics.
       show_on: top_menu verwijst naar pagina's die zijn ingesteld in de <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">site-instelling topmenu</a>
       make_collapsible: Maak de gehele component samenvouwbaar

@@ -2,11 +2,5 @@
   "name": "Homepage Feature",
   "component": true,
   "about_url": "https://meta.discourse.org/t/homepage-feature-component/144264",
-  "license_url": "https://github.com/discourse/discourse-homepage-feature-component/blob/main/LICENSE",
-  "modifiers": {
-    "topic_thumbnail_sizes": {
-      "type": "setting",
-      "value": "featured_image_sizes"
-    }
-  }
+  "license_url": "https://github.com/discourse/discourse-homepage-feature-component/blob/main/LICENSE"
 }

@@ -125,28 +125,6 @@ export default class FeaturedHomepageTopics extends Component {
     return getURL(`/t/${t.slug}/${t.id}${suffix}`);
   }
 
-  featuredImageSrcset(t) {
-    if (!t.thumbnails) {
-      return null;
-    }
-
-    const seenWidths = new Set();
-    const candidates = [];
-
-    for (const thumb of t.thumbnails) {
-      // skip the original (max_width is null) and any duplicate widths that
-      // occur when a registered size is larger than the source image
-      if (!thumb.max_width || !thumb.width || seenWidths.has(thumb.width)) {
-        continue;
-      }
-
-      seenWidths.add(thumb.width);
-      candidates.push(`${thumb.url} ${thumb.width}w`);
-    }
-
-    return candidates.length ? candidates.join(", ") : null;
-  }
-
   get featuredTags() {
     return settings.featured_tag
       .split("|")
@@ -357,12 +335,7 @@ export default class FeaturedHomepageTopics extends Component {
                         aria-hidden="true"
                         tabindex="-1"
                       >
-                        <img
-                          src={{t.image_url}}
-                          srcset={{this.featuredImageSrcset t}}
-                          sizes="(max-width: 460px) 100vw, 450px"
-                          alt=""
-                        />
+                        <img src={{t.image_url}} alt="" />
                       </a>
                       <h3>
                         <a href={{this.topicHref t}} data-topic-id={{t.id}}>

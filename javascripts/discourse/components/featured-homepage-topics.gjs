@@ -1,14 +1,16 @@
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
-import { concat, fn } from "@ember/helper";
+import { fn } from "@ember/helper";
 import { on } from "@ember/modifier";
 import { action } from "@ember/object";
 import didInsert from "@ember/render-modifiers/modifiers/did-insert";
+import { cancel } from "@ember/runloop";
 import { service } from "@ember/service";
 import { htmlSafe } from "@ember/template";
 import DButton from "discourse/components/d-button";
 import concatClass from "discourse/helpers/concat-class";
 import icon from "discourse/helpers/d-icon";
+import discourseDebounce from "discourse/lib/debounce";
 import getURL from "discourse/lib/get-url";
 import { emojiUnescape } from "discourse/lib/text";
 import { defaultHomepage } from "discourse/lib/utilities";
@@ -32,17 +34,19 @@ export default class FeaturedHomepageTopics extends Component {
   @tracked currentPageIndex = 0;
   @tracked featuredTopicsAvailable = 0;
   @tracked actualTopicsDisplayed = 0;
+  filteredTopics = [];
 
   constructor() {
     super(...arguments);
     this.router.on("routeDidChange", this.checkShowHere);
-    window.addEventListener("resize", this.getBannerTopics);
+    window.addEventListener("resize", this.onResize);
   }
 
   willDestroy() {
     super.willDestroy(...arguments);
     this.router.off("routeDidChange", this.checkShowHere);
-    window.removeEventListener("resize", this.getBannerTopics);
+    window.removeEventListener("resize", this.onResize);
+    cancel(this._resizeHandler);
   }
 
   @action
@@ -113,19 +117,73 @@ export default class FeaturedHomepageTopics extends Component {
   }
 
   topicHref(t) {
-    return getURL(
-      `/t/${t.slug}/${t.id}/${
-        settings.always_link_to_first_post ? "" : t.last_read_post_number
-      }`
-    );
+    const postNumber = settings.always_link_to_first_post
+      ? null
+      : t.last_read_post_number;
+
+    const suffix = postNumber ? `/${postNumber}` : "";
+    return getURL(`/t/${t.slug}/${t.id}${suffix}`);
+  }
+
+  featuredImageSrcset(t) {
+    if (!t.thumbnails) {
+      return null;
+    }
+
+    const seenWidths = new Set();
+    const candidates = [];
+
+    for (const thumb of t.thumbnails) {
+      // skip the original (max_width is null) and any duplicate widths that
+      // occur when a registered size is larger than the source image
+      if (!thumb.max_width || !thumb.width || seenWidths.has(thumb.width)) {
+        continue;
+      }
+
+      seenWidths.add(thumb.width);
+      candidates.push(`${thumb.url} ${thumb.width}w`);
+    }
+
+    return candidates.length ? candidates.join(", ") : null;
+  }
+
+  get featuredTags() {
+    return settings.featured_tag
+      .split("|")
+      .map((tag) => tag.trim())
+      .filter(Boolean);
   }
 
   @action
   async getBannerTopics() {
-    if (!settings.featured_tag) {
+    if (this.featuredTags.length === 0) {
       return;
     }
 
+    const sortOrder = settings.sort_by_created ? "created" : "activity";
+    const topicList = await this.store.findFiltered("topicList", {
+      filter: "latest",
+      params: {
+        tags: this.featuredTags,
+        order: sortOrder,
+      },
+    });
+
+    this.filteredTopics = topicList.topics
+      .filter(
+        (topic) =>
+          topic.image_url && (!settings.hide_closed_topics || !topic.closed)
+      )
+      .slice(
+        0,
+        Math.max(settings.number_of_topics, settings.max_number_of_topics)
+      );
+
+    this.featuredTopicsAvailable = this.filteredTopics.length;
+    this.updateDisplayedTopics();
+  }
+
+  updateDisplayedTopics() {
     this.actualTopicsDisplayed = settings.number_of_topics;
     if (!settings.show_all_always) {
       // Sizes here are based on the existing resize boundaries in the CSS
@@ -140,35 +198,23 @@ export default class FeaturedHomepageTopics extends Component {
       }
     }
 
-    const sortOrder = settings.sort_by_created ? "created" : "activity";
-    const topicList = await this.store.findFiltered("topicList", {
-      filter: "latest",
-      params: {
-        tags: [`${settings.featured_tag}`],
-        order: sortOrder,
-      },
-    });
-
-    const filteredTopics = topicList.topics
-      .filter(
-        (topic) =>
-          topic.image_url && (!settings.hide_closed_topics || !topic.closed)
-      )
-      .slice(
-        0,
-        Math.max(settings.number_of_topics, settings.max_number_of_topics)
-      );
-
-    this.featuredTopicsAvailable = filteredTopics.length;
-
     const firstFeaturedTopicIndex =
       this.currentPageIndex * this.actualTopicsDisplayed;
     const lastFeaturedTopicIndex =
       firstFeaturedTopicIndex + this.actualTopicsDisplayed;
 
-    this.featuredTagTopics = filteredTopics.slice(
+    this.featuredTagTopics = this.filteredTopics.slice(
       firstFeaturedTopicIndex,
       lastFeaturedTopicIndex
+    );
+  }
+
+  @action
+  onResize() {
+    this._resizeHandler = discourseDebounce(
+      this,
+      this.updateDisplayedTopics,
+      100
     );
   }
 
@@ -207,7 +253,7 @@ export default class FeaturedHomepageTopics extends Component {
       this.currentPageIndex -= 1;
     }
 
-    this.getBannerTopics();
+    this.updateDisplayedTopics();
   }
 
   @action
@@ -220,7 +266,7 @@ export default class FeaturedHomepageTopics extends Component {
       this.currentPageIndex += 1;
     }
 
-    this.getBannerTopics();
+    this.updateDisplayedTopics();
   }
 
   get pageProgressArray() {
@@ -244,7 +290,7 @@ export default class FeaturedHomepageTopics extends Component {
   setPageIndex(pageIndex, event) {
     this.currentPageIndex = pageIndex;
     event?.preventDefault();
-    this.getBannerTopics();
+    this.updateDisplayedTopics();
   }
 
   pageNumberTitle(pageIndex) {
@@ -305,22 +351,21 @@ export default class FeaturedHomepageTopics extends Component {
                 <div class="featured-topics">
                   {{#each this.featuredTagTopics as |t|}}
                     <div class="featured-topic">
-                      <div
+                      <a
                         class="featured-topic-image"
-                        style={{htmlSafe
-                          (concat "background-image: url(" t.image_url ")")
-                        }}
+                        href={{this.topicHref t}}
+                        aria-hidden="true"
+                        tabindex="-1"
                       >
-                        {{! template-lint-disable no-invalid-link-text }}
-                        <a href={{this.topicHref t}}></a>
-                      </div>
+                        <img
+                          src={{t.image_url}}
+                          srcset={{this.featuredImageSrcset t}}
+                          sizes="(max-width: 460px) 100vw, 450px"
+                          alt=""
+                        />
+                      </a>
                       <h3>
-                        <a
-                          href={{this.topicHref t}}
-                          role="heading"
-                          aria-level="2"
-                          data-topic-id={{t.id}}
-                        >
+                        <a href={{this.topicHref t}} data-topic-id={{t.id}}>
                           {{htmlSafe (this.emojiTitle t.fancy_title)}}
                         </a>
                       </h3>

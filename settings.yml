@@ -1,4 +1,6 @@
 featured_tag:
+  type: list
+  list_type: tag
   default: featured
 
 number_of_topics:
@@ -15,7 +17,7 @@ pages_loop:
   default: false
 
 hide_featured_tag:
-  default: false
+  default: true
 
 show_on:
   default: homepage
@@ -68,3 +70,7 @@ featured_content_position:
     - above_main_container
     - below_discovery_categories
     - discovery_list_controls_above
+
+featured_image_sizes:
+  default: "300x300|600x600|900x900"
+  type: list

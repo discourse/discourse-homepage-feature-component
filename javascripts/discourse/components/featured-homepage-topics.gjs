@@ -116,6 +116,19 @@ export default class FeaturedHomepageTopics extends Component {
     return emojiUnescape(t);
   }
 
+  topicSrcset(t) {
+    // thumbnails are only serialized when a theme modifier or plugin
+    // has registered extra sizes; otherwise fall back to src alone
+    if (!t.thumbnails?.length) {
+      return null;
+    }
+
+    return t.thumbnails
+      .filter((thumb) => thumb.url && thumb.width)
+      .map((thumb) => `${thumb.url} ${thumb.width}w`)
+      .join(", ");
+  }
+
   topicHref(t) {
     const postNumber = settings.always_link_to_first_post
       ? null
@@ -335,7 +348,14 @@ export default class FeaturedHomepageTopics extends Component {
                         aria-hidden="true"
                         tabindex="-1"
                       >
-                        <img src={{t.image_url}} alt="" />
+                        <img
+                          src={{t.image_url}}
+                          srcset={{this.topicSrcset t}}
+                          sizes="(max-width: 450px) 100vw, (max-width: 600px)
+                            50vw, (max-width: 800px) 33vw, (max-width: 999px)
+                            25vw, 450px"
+                          alt=""
+                        />
                       </a>
                       <h3>
                         <a href={{this.topicHref t}} data-topic-id={{t.id}}>

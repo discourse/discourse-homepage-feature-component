@@ -11,6 +11,7 @@ tr_TR:
       number_of_topics: Maksimum genişlikte en fazla 5 konu göster
       max_number_of_topics: Öne çıkan konuların maksimum sayısı. number_of_topics değerinden daha yüksek bir değer ayarlanırsa, konular arasında gezinmek için oklar görüntülenir.
       pages_loop: Sayfalandırma etkinleştirilirse (max_number_of_topics > number_of_topics), sayfalar son sayfadan sonra ilk sayfaya geri döner.
+      hide_featured_tag: Bu özellik etkinleştirildiğinde, yukarıda belirlenen öne çıkan etiket(ler) normal kullanıcılar tarafından konular görüntülendiğinde görünmez hale gelir. Site yöneticileri ise bunları hâlâ görebilir.
       show_on: top_menu, <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">üst menü site ayarı</a> bölümünde ayarlanan sayfaları ifade eder
       make_collapsible: Tüm bileşeni daraltılabilir hâle getir
       show_title: Aşağıda ayarlanan metni görüntüler (make_collapsible açık olduğunda başlık her zaman gösterilir)

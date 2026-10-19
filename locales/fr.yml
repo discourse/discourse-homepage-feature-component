@@ -8,13 +8,16 @@ fr:
   page_number: "Page %{pageNumber}"
   theme_metadata:
     settings:
-      number_of_topics: Afficher jusqu'à 5 sujets à la largeur maximale
+      number_of_topics: Afficher jusqu'à 5 sujets à la largeur maximale
+      max_number_of_topics: Nombre maximal de sujets à la une. Si ce nombre est supérieur à number_of_topics, des flèches s'afficheront pour parcourir les sujets.
+      pages_loop: Lorsque la pagination est activée (max_number_of_topics > number_of_topics), la dernière page est suivie de la première.
+      hide_featured_tag: Lorsque cette option est activée, les étiquettes à la une définies ci-dessus ne sont pas visibles par les utilisateurs ordinaires qui consultent les sujets. L'équipe du site peut toujours les voir.
       show_on: top_menu fait référence aux pages définies dans le paramètre de site <a href="%{base_path}/admin/site_settings/category/all_results?filter=top_menu">top menu</a>
       make_collapsible: Rendre l'ensemble du composant rabattable
       show_title: affiche le texte défini ci-dessous (le titre est toujours affiché lorsque make_collapsible est activé)
-      sort_by_created: Désactiver le tri par dernière activité
-      show_all_always: Par défaut, le nombre de sujets affichés est réduit en fonction de la taille de l'écran, jusqu'à 1 seul sur mobile. Si vous cochez ce paramètre, tout s'affichera sur n'importe quelle taille d'écran.
-      hide_closed_topics: Masquer les sujets fermés de la liste des sujets en vedette
-      always_link_to_first_post: Toujours créer un lien vers le premier message dans le sujet, même s'il a été lu avant
-      mobile_style: Si <code>show_all_always</code> est cochée, les sujets seront affichés par défaut via un défilement horizontal. Vous pouvez modifier ce comportement sur des écrans plus petits et choisir de les empiler sur tout écran inférieur à 600 pixels.
-      featured_content_position: Développement de thème avancé&colon; cela modifie la sortie de l'extension pour le composant
+      sort_by_created: Désactiver cette option pour trier les sujets selon leur dernière activité
+      show_all_always: Par défaut, le nombre de sujets affichés diminue en fonction de la taille de l'écran, jusqu'à 1 sujet seulement sur mobile. Si vous cochez ce paramètre, tous les sujets seront affichés quelle que soit la taille de l'écran.
+      hide_closed_topics: Masquer les sujets fermés de la liste des sujets à la une
+      always_link_to_first_post: Toujours créer un lien vers la première publication du sujet, même si ce sujet a déjà été lu
+      mobile_style: Si l'option <code>show_all_always</code> est activée, les sujets seront affichés par défaut via un défilement horizontal. Vous pouvez modifier ce comportement sur des écrans plus petits et choisir de les empiler sur tout écran inférieur à 600 pixels.
+      featured_content_position: Développement de thème avancé &colon; modifie la sortie de l'extension utilisée par le composant
